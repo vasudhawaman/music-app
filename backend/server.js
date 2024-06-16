@@ -6,7 +6,7 @@ const mongoose =require('mongoose');
 const cookieParser = require('cookie-parser')
 const verifyToken = require('./middleware/verifyToken');
 const setToken = require('./middleware/setToken')
-mongoose.connect("mongodb+srv://vasudhawaman734:NTmWW8UMpb5980be@cluster0.ctfmgcz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb://localhost:27017");
 const db =mongoose.connection;
 db.on('error',console.error.bind(console,'connection error!!'));
 
@@ -30,20 +30,18 @@ app.use(cors(
 ));
 app.use(bodyParser.urlencoded({extended :false}));
 app.use(express.urlencoded({extended: false}));
-
-
 app.use('/auth',require('./routes/user'))
 app.use('/playlist', require('./routes/playlist'));
-app.get('/song',verifyToken,async (req,res)=>{
+app.get('/song',async (req,res)=>{
      const result = await Music.find();
-     res.send(result)
+     res.json(result)
 });
 app.get('/:token' ,(req,res)=>{
      console.log(req.params.token)
      res.cookie('token_musify',String(req.params.token),{
-          maxAge:24*60*60*7,
+          maxAge:24*60*60*7*1000,
       }).send({message:"success"})
-     console.log(req.cookies)
+    
 })
 
 app.listen(8000,()=>{

@@ -1,18 +1,10 @@
 import React from 'react';
 import { FaCompactDisc } from "react-icons/fa6";
 import { MdOutlinePlaylistPlay } from "react-icons/md";
-const Navbar = ({width,setwidth,setsidebarWidth}) => {
+import {Link} from "react-router-dom"
+const Navbar = () => {
 
-    const handleonclick=()=>{
-        if(width==='100%')
-        {setwidth('85%');
-            setsidebarWidth('15%')
-        }
-        else if(width==='85%'){
-            setwidth('100%');
-            setsidebarWidth('0%')
-        }
-    }
+    
 
     return (
         <div>
@@ -21,16 +13,17 @@ const Navbar = ({width,setwidth,setsidebarWidth}) => {
                     <div className="relative flex h-16 items-center justify-between ">
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="flex flex-shrink-0 items-center">
-                                <div><MdOutlinePlaylistPlay className='opensidebar text-orange-300 h-7 w-7 'onClick={handleonclick}/></div>
+                                <div><MdOutlinePlaylistPlay className='opensidebar text-orange-300 h-7 w-7 '/></div>
                                 <div><FaCompactDisc className='discnav text-orange-300 h-7 w-7 mx-3' /></div>
                                 <h1 className="h1title text-orange-300 py-2 from-inherit mx-2 text-2xl">Musicify</h1>
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
                                 <div className="flex space-x-4">
-                                    <a href="#" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Home</a>
-                                    <a href="#" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Saved</a>
-                                    <a href="#" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Playlist</a>
-                                    <a href="#" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Favourite</a>
+                                <Link to="/home" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Home</Link>
+                                <Link to="/songs" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Songs</Link>
+                                    <Link to="/artist" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Artists</Link>
+                                    <Link to="/playlist" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Playlist</Link>
+                                    <Link to="/upload" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Upload Song</Link>
                                 </div>
                             </div>
                         </div>

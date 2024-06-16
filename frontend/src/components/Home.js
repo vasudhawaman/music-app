@@ -16,7 +16,7 @@ const Home = () => {
     <div className="sidebar" style={{width:sidebarWidth}}><Sidebar/></div>
     <div className='right-side' style={{width:width}}>
         <Navbar width={width} setwidth={setwidth} setsidebarWidth={setsidebarWidth}/>
-        <Cards/>
+        <Cards />
         <TopArtist/>
         <Yourplaylist/>
         <Smallcards/>

@@ -57,7 +57,7 @@ const Cards = () => {
                 </div>
 
                 <div
-                    className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+                    className=" w-full overflow-hidden after:clear-both after:block after:content-['']">
                     <div
                         className="relative float-left -mr-[100%] w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
                         data-twe-carousel-fade

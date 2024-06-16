@@ -5,7 +5,6 @@ const playlistSchema=new Schema({
     userId:{
         type:String,
         require:true,
-        unique:true
     },
     cover:{
         type:String,
@@ -13,7 +12,7 @@ const playlistSchema=new Schema({
     },
     name:{
         type:String,
-        require:false
+        require:true,
     },
     songs:{
         type:Array,
