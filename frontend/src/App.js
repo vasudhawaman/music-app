@@ -18,6 +18,8 @@ import Allplaylist from './pages/Allplaylist';
 import Allartist from './pages/Allartists';
 import Allsongs from './pages/Allsongs';
 import Playlist from './components/Playlist'
+import ProfilePage from './components/ProfilePage';
+import InsidePlaylist from './components/InsidePlaylist';
 function App() {
   const[otpState,setOtpState]=useState()
   const[forgetotp,setforgetotp]=useState();
@@ -38,6 +40,8 @@ function App() {
           <Route path='/artist' element={<Allartist/>}/>
           <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent}/>}/>
           <Route path ='/player/:name' element={<Playlist/>} />
+          <Route path='/profile' element={<ProfilePage/>}></Route>
+          <Route path='/album/:id' element={<InsidePlaylist/>}/>
         </Routes>
       </Router>
      

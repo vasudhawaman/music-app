@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import Navbar from './Navbar'
 import Cards from './Cards'
 import TopArtist from './TopArtist'
@@ -9,6 +9,7 @@ import Footer from './Footer'
 import Sidebar from './Sidebar'
 
 const Home = () => {
+    
     const[width,setwidth]=useState('100%')
     const[sidebarWidth,setsidebarWidth]=useState('0%')
   return (
@@ -21,6 +22,7 @@ const Home = () => {
         <Yourplaylist/>
         <Smallcards/>
         <Recommdation width={width}/>
+        
         <Footer/>
     </div>
     </div>
