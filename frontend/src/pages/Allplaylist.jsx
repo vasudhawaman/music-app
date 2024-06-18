@@ -1,5 +1,5 @@
 import react,{useEffect,useState} from "react"
-import Navbar from "../components/Navbar";
+
 import Yourplaylist from "../components/Yourplaylist";
 import PlaylistCard from "../components/PlaylistCard";
 import Create from '../components/Create'
@@ -20,7 +20,7 @@ export default function Allplaylist({current,setCurrent}){
     },[])
     return(
         <>
-        <Navbar/>
+       
         <div className='your-playlist h-96'>
         <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Your Playlists</h1>
         <div className="all-card flex" >
@@ -28,7 +28,7 @@ export default function Allplaylist({current,setCurrent}){
        
         {
            playlists.length>0 &&  playlists.map((page)=>{
-               return  <PlaylistCard name={page.name} />;
+               return  <PlaylistCard name={page.name} cover={page.cover}/>;
              })
         }
         </div>

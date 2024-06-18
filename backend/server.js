@@ -2,10 +2,13 @@ const express = require('express');
 const cors =require('cors');
 const bodyParser =require('body-parser');
 const Music = require('./model');
+const User = require('./models/User')
 const mongoose =require('mongoose');
 const cookieParser = require('cookie-parser')
 const verifyToken = require('./middleware/verifyToken');
 const setToken = require('./middleware/setToken')
+const redis = require('redis')
+const redisClient = redis.createClient()
 mongoose.connect("mongodb://localhost:27017");
 const db =mongoose.connection;
 db.on('error',console.error.bind(console,'connection error!!'));
@@ -43,7 +46,32 @@ app.get('/:token' ,(req,res)=>{
       }).send({message:"success"})
     
 })
+app.post('/upload',verifyToken ,async(req,res)=>{
+       const {song,cover,audio} = req.body;
+       const id =req.id;
+       try{
+           const result = await User.find({_id:id});
+           const {username} = result[0];
+           const newSong =new Music({
+               artist:username,
+               song:song,
+               cover:cover,
+               audio:audio
+           })
+           newSong.save()
+           res.status(200).json({message:"Uploaded Song!!"})
+       }catch(err){
+          console.log(err)
+            res.status(400).json({message:"Not uploaded"})
+       }
+    
+})
+app.post('/saved',verifyToken,async(req,res)=>{
+          const {songs} =req.body;
+          if(redisClient.exists("cache") === 0) redisClient.setEx("song1",24*7*60*60,JSON.stringify(songs))
+          res.json("sucess")
 
+})
 app.listen(8000,()=>{
      console.log("Listening on port 8000");
 });

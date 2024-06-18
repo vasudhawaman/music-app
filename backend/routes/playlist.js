@@ -50,7 +50,17 @@ router.delete('/delete/:name',verifyToken,async(req,res)=>{
             res.status(403).json({message:"Playlist not deleted!"});
       }
 });
-
+router.post("/cover",verifyToken,async(req,res)=>{
+      const {cover,name} = req.body;
+      const id = req.id;
+      console.log(req.body)
+      try{
+           const result = await Playlist.findOneAndUpdate({name:name,userId:id},{$set:{cover:cover}});
+           if(result) res.status(200).json({message:"Cover changed!!"})
+      }catch(err){
+            res.status(404).json({message:"Not updated!"})
+      }
+})
 router.put("/add",verifyToken,async(req,res)=>{
          const {songs,name} = req.body;
          console.log(req.body)

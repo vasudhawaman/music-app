@@ -18,6 +18,8 @@ import Allplaylist from './pages/Allplaylist';
 import Allartist from './pages/Allartists';
 import Allsongs from './pages/Allsongs';
 import Playlist from './components/Playlist'
+import Upload from './components/Upload';
+import Navbar from './components/Navbar';
 function App() {
   const[otpState,setOtpState]=useState()
   const[forgetotp,setforgetotp]=useState();
@@ -27,6 +29,7 @@ function App() {
    
       <Router>
         <Routes>
+          
           <Route path='/' element={<Register setOtpState={setOtpState}/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/forget' element={<Forgetpass setforgetotp={setforgetotp}/>}/>
@@ -34,11 +37,15 @@ function App() {
           <Route path='/change' element={<Changepass forgetotp={forgetotp}/>}/>
           <Route path='/otp1' element={<Otp1 otpState={otpState}/>}/>
           <Route path='/home' element={<Home/>}/>
+          <Route element={<Navbar/>} >
           <Route path='/playlist' element={<Allplaylist current={current} setCurrent={setCurrent}/>}/>
           <Route path='/artist' element={<Allartist/>}/>
           <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent}/>}/>
           <Route path ='/player/:name' element={<Playlist/>} />
-        </Routes>
+          <Route path='/upload' element={<Upload/>}/>  
+          </Route>      
+          </Routes>
+       
       </Router>
      
       </div>

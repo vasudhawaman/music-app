@@ -5,7 +5,7 @@ import MusicCover from "./MusicCover";
 import Control from "./Control";
 import AudioHover from "./AudioHover";
 import Playplaylist from "./Playplaylist";
-import Navbar from "./Navbar"
+
 export default function Playlist(){
         
         //   const shuffle = (array: string[]) => { 
@@ -47,7 +47,7 @@ export default function Playlist(){
       return(
         <>
      <div className="h-screen w-screen bg-black">
-        <Navbar/>
+        
       <div className="grid grid-cols-4 h-1/6 w-full">
           <div className="col-span-1 bold content-center"
           >

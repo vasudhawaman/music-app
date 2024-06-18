@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react"
 import AudioHover from "../components/AudioHover";
 import MusicCover from "../components/MusicCover";
-import Navbar from "../components/Navbar";
 import Search from "../components/Search"
 export default function Allsongs({current,setCurrent}){
     const [songs,setSongs] =useState([])
@@ -34,7 +33,7 @@ export default function Allsongs({current,setCurrent}){
 }
   return(
       <>
-      <Navbar/>
+    
       <div className='your-playlist h-96'>
       <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Songs</h1>
        <Search songs={add}/>

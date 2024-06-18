@@ -1,7 +1,5 @@
 import React from "react";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Search from "./Search"
-import Popup from 'reactjs-popup';
+
 import 'reactjs-popup/dist/index.css';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 export default function MusicCover({song,artist,cover,audio,index,current,setCurrent,setAdd}){
