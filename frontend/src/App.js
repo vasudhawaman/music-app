@@ -18,8 +18,13 @@ import Allplaylist from './pages/Allplaylist';
 import Allartist from './pages/Allartists';
 import Allsongs from './pages/Allsongs';
 import Playlist from './components/Playlist'
+<<<<<<< HEAD
 import Upload from './components/Upload';
 import Navbar from './components/Navbar';
+=======
+import ProfilePage from './components/ProfilePage';
+import InsidePlaylist from './components/InsidePlaylist';
+>>>>>>> bd9f8e9fbde0f0200e73f23daa4017fc83e38aa7
 function App() {
   const[otpState,setOtpState]=useState()
   const[forgetotp,setforgetotp]=useState();

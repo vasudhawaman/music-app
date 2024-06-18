@@ -1,34 +1,37 @@
-import React,{useState,useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import AudioHover from "../components/AudioHover";
 import MusicCover from "../components/MusicCover";
 import Search from "../components/Search"
-export default function Allsongs({current,setCurrent}){
-    const [songs,setSongs] =useState([])
-    const [add,setAdd] =useState({})
-  useEffect(()=>{
-      const url = 'http://localhost:8000/song';
-       fetch(url,{method:"GET",credentials:"include"}).then((response)=>{
-         response.json().then((data)=>{
-             setSongs(data)
-         })
-      }).catch((e)=>{
-          console.log(e)
-      })
-     
+import { songsData } from '../assets/assets'
+import Songitem from "../components/Songitem";
+export default function Allsongs({ current, setCurrent }) {
+    const [songs, setSongs] = useState([])
+    const [add, setAdd] = useState({})
+    useEffect(() => {
+        const url = 'http://localhost:8000/song';
+        fetch(url, { method: "GET", credentials: "include" }).then((response) => {
+            response.json().then((data) => {
+                setSongs(data)
+            })
+        }).catch((e) => {
+            console.log(e)
+        })
 
-  },[])
-  function nextSong(index){
-    if(index <songs.length && index >=0){
-         setCurrent({
-             
-             now: songs[index],
-             play:true,
-             index:index,
-             length:songs.length
-         })
-    
-    }else{
-     setCurrent(null)
+
+    }, [])
+    function nextSong(index) {
+        if (index < songs.length && index >= 0) {
+            setCurrent({
+
+                now: songs[index],
+                play: true,
+                index: index,
+                length: songs.length
+            })
+
+        } else {
+            setCurrent(null)
+        }
     }
 }
   return(
