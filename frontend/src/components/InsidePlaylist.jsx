@@ -6,6 +6,7 @@ import { albumsData } from '../assets/assets'
 import { assets } from '../assets/assets'
 import { songsData } from '../assets/assets'
 import { PlayerContext } from '../context/PlayerContext'
+import SongPlayer from './SongPlayer'
 const DisplayAlbum = () => {
     const {id}=useParams();
     const albumData =albumsData[id];
@@ -13,7 +14,7 @@ const DisplayAlbum = () => {
     
   return (
     <>
-       <Navbar/>
+       
       <div  className='mt-10 flex gap-8 flex-col md:flex-row md:items-end text-white'>
          <img className='w-48 rounded'src={albumData.image} alt="" />
          <div className="flex flex-col">
@@ -44,7 +45,9 @@ const DisplayAlbum = () => {
             </div>
          ))
        }
-       
+       <div className='bottom-0 sticky w-screen'>
+          <SongPlayer/>
+        </div>
     </>
   )
 }

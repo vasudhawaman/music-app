@@ -33,23 +33,24 @@ export default function Allsongs({ current, setCurrent }) {
             setCurrent(null)
         }
     }
-}
-  return(
-      <>
+    return (
+        <>
     
-      <div className='your-playlist h-96'>
-      <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Songs</h1>
-       <Search songs={add}/>
-      {
-         songs.length>0 &&  songs.map((s,i)=>{
-            return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current} setCurrent={setCurrent} setAdd={setAdd}/>
-           })
-      }
-     
-     <div className="text-left w-screen bg-black z-10">
-     { current ? <AudioHover current={current} setCurrent={setCurrent}  nextSong={nextSong} /> : null }
-      </div>
-     </div>
-      </>
-  )
+            <div className='your-playlist h-96'>
+                <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Songs</h1>
+                <Search songs={add} />
+                {
+                    songs.length > 0 && songs.map((s, i) => {
+                        return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current} setCurrent={setCurrent} setAdd={setAdd} />
+                    })
+                }
+    
+                <div className="text-left w-screen bg-black z-10">
+                    {current ? <AudioHover current={current} setCurrent={setCurrent} nextSong={nextSong} /> : null}
+                </div>
+            </div>
+        </>
+    )
+    
 }
+
