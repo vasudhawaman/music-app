@@ -87,4 +87,19 @@ router.post('/search',verifyToken,async(req,res)=>{
       }
 
 })
+router.post('/:name',verifyToken,async(req,res)=>{
+      const {song}=req.body;
+      const {name}=req.params;
+      const id =req.id;
+      
+      try{   
+            const result = await Playlist.findOneAndUpdate({$and:[{name:name},{userId:id}]},{$pull:{songs:{song:song.song}}});
+          
+            res.status(200).json({ message:"success",result:result})
+                  
+      }catch(err){
+            res.status(404).json({message:"notfound"})
+      }
+
+})
 module.exports = router;
