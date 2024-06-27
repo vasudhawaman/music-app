@@ -3,7 +3,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 const Recommdation = ({width}) => {
     const calculatedMarginLeft = width === '85%' ? '67%' : '70%';
     return (
-        <div className='your-playlist h-96'>
+        <div className='your-playlist h-96' id="recommendation">
             <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 underline'>Your Top Playlist</h1>
             <div className="all-card flex" >
                 <div className='song-card w-56 mx-4 ' style={{height:'80%'}}>

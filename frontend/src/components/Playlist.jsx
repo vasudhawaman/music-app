@@ -6,7 +6,7 @@ import Control from "./Control";
 import AudioHover from "./AudioHover";
 import Playplaylist from "./Playplaylist";
 
-export default function Playlist(){
+export default function Playlist({add,setAdd}){
         
         //   const shuffle = (array: string[]) => { 
         //     return array.sort(() => Math.random() - 0.5); 
@@ -19,6 +19,7 @@ export default function Playlist(){
              fetch(url,{method:"GET",credentials:"include"}).then((response)=>{
                response.json().then((data)=>{
                     setSongs(data[0].songs)
+                    setData(data[0])
                })
             }).catch((e)=>{
                 console.log(e)
@@ -27,6 +28,7 @@ export default function Playlist(){
     
         },[])
         const [songs,setSongs] =useState([])
+        const [data,setData] =useState(null)
         const [current,setCurrent] =useState(null)
         const [play,setPlay] = useState(false)
          console.log(typeof(songs))
@@ -51,10 +53,10 @@ export default function Playlist(){
       <div className="grid grid-cols-4 h-1/6 w-full">
           <div className="col-span-1 bold content-center"
           >
-            <img src={image} className="object contain h-3/5 w-full md:w-3/5 pl-10" />
+         {  data? <img src={ data.cover} className="object contain h-3/5 w-full md:w-3/5 pl-10" /> : <img src={ image} className="object contain h-3/5 w-full md:w-3/5 pl-10" /> }
           </div>
           <div className="col-span-3 h-1/6 pt-8 pl-4 text-left text-orange-500  border-x-fuchsia-600">
-           <h1 className="font-bold text-lg">Playlist</h1>
+           <h1 className="font-bold text-lg">{name}</h1>
            <h3 className="text-md">Created By: </h3>
            <h6 className="text-sm">Total songs: Time: </h6>
           </div>
@@ -62,9 +64,9 @@ export default function Playlist(){
       <Playplaylist setCurrent={setCurrent} songs={songs}/>
       {songs.map((s,i)=>{
        
-                return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current}  setCurrent={setCurrent}/>
+                return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current}  setCurrent={setCurrent} add={add} setAdd={setAdd}/>
       })}
-          <div className="text-left w-screen bg-black z-10">
+    <div className="text-left w-screen bg-black z-10 ">
       {  current ? <AudioHover current={current} setCurrent={setCurrent}  nextSong={nextSong} setPlay={setPlay}/> : null }
       </div>
       </div>

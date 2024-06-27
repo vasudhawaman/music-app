@@ -4,9 +4,9 @@ import MusicCover from "../components/MusicCover";
 import Search from "../components/Search"
 import { songsData } from '../assets/assets'
 import Songitem from "../components/Songitem";
-export default function Allsongs({ current, setCurrent }) {
+export default function Allsongs({ current, setCurrent,add,setAdd }) {
     const [songs, setSongs] = useState([])
-    const [add, setAdd] = useState({})
+   
     useEffect(() => {
         const url = 'http://localhost:8000/song';
         fetch(url, { method: "GET", credentials: "include" }).then((response) => {
@@ -33,7 +33,7 @@ export default function Allsongs({ current, setCurrent }) {
             setCurrent(null)
         }
     }
-}
+
   return(
       <>
     
@@ -42,7 +42,7 @@ export default function Allsongs({ current, setCurrent }) {
        <Search songs={add}/>
       {
          songs.length>0 &&  songs.map((s,i)=>{
-            return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current} setCurrent={setCurrent} setAdd={setAdd}/>
+            return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current} setCurrent={setCurrent} add={add} setAdd={setAdd} />
            })
       }
      

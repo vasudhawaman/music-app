@@ -13,22 +13,19 @@ import Otp from './screen/Login/Otp';
 import Changepass from './screen/Login/Changepass';
 import Otp1 from './screen/Register/Otp1';
 import Home from './components/Home';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Allplaylist from './pages/Allplaylist';
 import Allartist from './pages/Allartists';
 import Allsongs from './pages/Allsongs';
 import Playlist from './components/Playlist'
-<<<<<<< HEAD
 import Upload from './components/Upload';
 import Navbar from './components/Navbar';
-=======
-import ProfilePage from './components/ProfilePage';
-import InsidePlaylist from './components/InsidePlaylist';
->>>>>>> bd9f8e9fbde0f0200e73f23daa4017fc83e38aa7
+import ProfilePage from './components/ProfilePage'
 function App() {
   const[otpState,setOtpState]=useState()
   const[forgetotp,setforgetotp]=useState();
   const [current,setCurrent] = useState(null);
+  const [add, setAdd] = useState({})
   return (
     <div >
    
@@ -45,9 +42,11 @@ function App() {
           <Route element={<Navbar/>} >
           <Route path='/playlist' element={<Allplaylist current={current} setCurrent={setCurrent}/>}/>
           <Route path='/artist' element={<Allartist/>}/>
-          <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent}/>}/>
-          <Route path ='/player/:name' element={<Playlist/>} />
-          <Route path='/upload' element={<Upload/>}/>  
+          <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent} add={add} setAdd={setAdd}/>}/>
+          <Route path ='/player/:name' element={<Playlist add={add} setAdd={setAdd}/>} />
+          <Route path='/upload' element={<Upload/>}/>
+          <Route path='/profile' element={<ProfilePage/>} />  
+          <Route path='/songAll' element={<Allartist/>} />
           </Route>      
           </Routes>
        

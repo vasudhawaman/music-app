@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaCompactDisc } from "react-icons/fa6";
 import { MdOutlinePlaylistPlay } from "react-icons/md";
 import {Link, Outlet} from "react-router-dom"
+import {Link as Link2} from "react-scroll"
 const Navbar = () => {
-
+    const [open,setOpen] =useState(false)
     // const [credentials, setcredentials] = useState("")
     // const handlesubmit = async (e) => {
     //     e.preventDefault();
@@ -29,20 +30,22 @@ const Navbar = () => {
     //     setcredentials({ ...credentials, [e.target.name]: e.target.value })
     //     console.log(credentials);
     // }
-
+    function opensidebar(){
+           setOpen((prev)=> !prev)
+    }
     return (
         <>
         <div>
             <nav className="bg-black">
-                <div className="mx-1 max-w-7xl px-2 sm:px-6 lg:px-8">
+                <div className="fixed top-0 left-0 md:mx-1 max-w-7xl px-2 sm:px-6 lg:px-8 mb-0 md:mb-4">
                     <div className="relative flex h-16 items-center justify-between ">
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="flex flex-shrink-0 items-center">
-                                <div><MdOutlinePlaylistPlay className='opensidebar text-orange-300 h-7 w-7 '/></div>
+                                <div><MdOutlinePlaylistPlay className='block sm:hidden text-orange-300 h-7 w-7 'onClick={opensidebar}/></div>
                                 <div><FaCompactDisc className='discnav text-orange-300 h-7 w-7 mx-3' /></div>
                                 <h1 className="h1title text-orange-300 py-2 from-inherit mx-2 text-2xl">Musicify</h1>
                             </div>
-                            <div className="hidden sm:ml-6 sm:block">
+                            <div className="hidden lg:block sm:ml-6 ">
                                 <div className="flex space-x-4">
                                 <Link to="/home" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Home</Link>
                                 <Link to="/songs" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Songs</Link>
@@ -54,12 +57,12 @@ const Navbar = () => {
                         </div>
                         <div className="flex items-center space-x-4">
                             <div className="relative">
-                                {/* <input 
+                                 {/* <input 
                                     type="text" 
                                     className="searchbar block w-full px-3 py-2 border border-gray-300 rounded-md text-sm text-black placeholder-gray-500 focus:outline-none focus:ring-orange-300 focus:border-orange-300 sm:text-sm"
                                     placeholder="Search..."
                                 onChange={handleonchange}
-                                value={credentials}/> */}
+                                value={credentials}/>  */}
                             </div>
                             <div className="relative">
                                 <Link to="/profile">
@@ -72,14 +75,16 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-                <div className="sm:hidden" id="mobile-menu">
-                    <div className="space-y-1 px-2 pb-3 pt-2">
+              {open ? <div  id="sidebar" >
+                    <div className="fixed top-8 left-0 space-y-1 px-2 pb-3 pt-2 bg-black">
                         <a href="#" className="block rounded-md px-3 py-2 text-center text-base font-medium text-orange-300 hover:bg-orange-300 hover:text-black" style={{width:'40%', marginLeft:'30%'}}>Home</a>
                         <a href="#" className="block rounded-md px-3 py-2 text-center text-base font-medium text-orange-300 hover:bg-orange-300 hover:text-black" style={{width:'40%', marginLeft:'30%'}}>Saved</a>
                         <a href="#" className="block rounded-md px-3 py-2 text-center text-base font-medium text-orange-300 hover:bg-orange-300 hover:text-black" style={{width:'40%', marginLeft:'30%'}}>Playlist</a>
                         <a href="#" className="block rounded-md px-3 py-2 text-center text-base font-medium text-orange-300 hover:bg-orange-300 hover:text-black" style={{width:'40%', marginLeft:'30%'}}>Favourite</a>
+                      
                     </div>
-                </div>
+                </div> : null }
+                
             </nav>
         </div>
         <Outlet />

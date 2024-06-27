@@ -42,7 +42,7 @@ export default function Control({current,setCurrent,nextSong,setPlay}){
   
     
       const song = document?.getElementById("audio");
-       
+       song?.play()
     song?.addEventListener("ended",()=>{
       document.getElementById("play").classList.remove("hidden")
       document.getElementById("pause").classList.remove("text-center")
@@ -79,7 +79,7 @@ export default function Control({current,setCurrent,nextSong,setPlay}){
     }
       return(
         <div className="h-1/3 pl-5 pr-5 text-orange-500 bg-black ml-0">
-              <div>{value}</div>
+              <div>{`${Math.floor(value /60)}`+':'+`${Math.floor(value % 60)}`}</div>
          <div class="bg-black">
             <input type="range" min="0" max={maxValue}  id="myRange" className="w-full " value={value} style={{accentColor:"rgb(249 ,115, 22)"}} onChange={handleValue} />
          </div>
