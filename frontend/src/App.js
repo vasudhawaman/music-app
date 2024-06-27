@@ -20,6 +20,10 @@ import Allsongs from './pages/Allsongs';
 import Playlist from './components/Playlist'
 import Upload from './components/Upload';
 import Navbar from './components/Navbar';
+//=======
+import ProfilePage from './components/ProfilePage';
+import InsidePlaylist from './components/InsidePlaylist';
+//>>>>>>> bd9f8e9fbde0f0200e73f23daa4017fc83e38aa7
 import ProfilePage from './components/ProfilePage'
 function App() {
   const[otpState,setOtpState]=useState()
@@ -41,12 +45,11 @@ function App() {
           <Route path='/home' element={<Home/>}/>
           <Route element={<Navbar/>} >
           <Route path='/playlist' element={<Allplaylist current={current} setCurrent={setCurrent}/>}/>
+          <Route path='/album/:id' element={<InsidePlaylist/>}/>
           <Route path='/artist' element={<Allartist/>}/>
-          <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent} add={add} setAdd={setAdd}/>}/>
-          <Route path ='/player/:name' element={<Playlist add={add} setAdd={setAdd}/>} />
-          <Route path='/upload' element={<Upload/>}/>
-          <Route path='/profile' element={<ProfilePage/>} />  
-          <Route path='/songAll' element={<Allartist/>} />
+          <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent}/>}/>
+          <Route path ='/player/:name' element={<Playlist/>} />
+          <Route path='/upload' element={<Upload/>}/>  
           </Route>      
           </Routes>
        

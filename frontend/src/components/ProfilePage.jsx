@@ -4,8 +4,8 @@ import ArtistCard from './Artistcard'
 const ProfilePage = () => {
     return (
         <>
-           
-            <div className="container font-bold text-orange-300 opacity-60 font-mono ">
+          
+            <div className="container font-bold text-orange-300  font-mono ">
                 <div className='text-xl text-center mt-10 mr-10  '>Your Profile</div>
                 <img className=" ml-[600px] h-16 w-16 mt-3 rounded-full cursor-pointer" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                 <h1 className='mr-10 mt-5 text-4xl'>Username</h1>

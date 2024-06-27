@@ -7,7 +7,7 @@ import Smallcards from './Smallcards'
 import Recommdation from './Recommdation'
 import Footer from './Footer'
 import Sidebar from './Sidebar'
-
+import SongPlayer from './SongPlayer'
 const Home = () => {
     
     const[width,setwidth]=useState('100%')
@@ -24,6 +24,9 @@ const Home = () => {
         <Recommdation width={width}/>
         
         <Footer/>
+        <div className='bottom-0 sticky w-screen'>
+          <SongPlayer/>
+        </div>
     </div>
     </div>
   )
