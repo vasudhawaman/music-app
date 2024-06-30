@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { FaCompactDisc } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 const Otp1 = ({otpState}) => {
   const [otps, setOtp] = useState('');
     const { credentials, otp } = otpState;
-    
+    const Navigate = useNavigate();
     const onhandleclick = async (e) => {
         e.preventDefault();
         if (otps != otp) {
@@ -19,7 +20,7 @@ const Otp1 = ({otpState}) => {
                 body: JSON.stringify({ username: credentials.username, password: credentials.password, email: credentials.email })
             });
             const json = await response.json();
-            console.log(json);
+           if(json.message === "success") Navigate('/home')
         }
     };
     const handleChange = (e) => {

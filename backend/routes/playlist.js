@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const Playlist = require('../models/Playlist');
-const verifyToken = require('../middleware/verifyToken')
+const verifyToken = require('../middleware/verifyToken');
+const User = require('../models/User');
+const Follow = require('../models/Follow');
 const router = express.Router();
-
 router.get('/all',verifyToken,async(req,res)=>{
       const playlists = await Playlist.find({userId:req.id});
       res.status(200).json(playlists);
@@ -101,5 +102,42 @@ router.post('/:name',verifyToken,async(req,res)=>{
             res.status(404).json({message:"notfound"})
       }
 
+})
+router.post('/allfollow',  async (req, res) => {
+     
+      const { id } = req.body;
+      const user = await User.find({ _id: id })
+      const person = await User.find({_id: req.id})
+      const user1 = await Follow.findOne({ followerusername: person[0].username, followingusername: user[0].username })
+      if (!user1) {
+            const data = new Follow(
+                  {
+                        followerusername: username,
+                        followingusername: user[0].username,
+                        email: user[0].email
+                  }
+            )
+            data.save()
+            res.status(200).json({message:"Success"})
+      }
+      else {
+            res.json('all ready following')
+      }
+})
+
+router.post('/followings',verifyToken,  async (req, res) => {
+      const {username}= req.body
+      const users = await Follow.find({followerusername: username});
+      res.json(users)
+})
+router.post('/followers',verifyToken,  async (req, res) => {
+      const {username}= req.body
+      const users = await Follow.find({followingusername: username});
+      res.json(users)
+})
+router.delete('/deletefollower',verifyToken,async(req,res)=>{
+      const {id}=req.body;
+      const follower= await Follow.findByIdAndDelete(id);
+      res.json(follower)
 })
 module.exports = router;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect } from 'react'
 import './register.css'
 import { FaCompactDisc } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,21 @@ const Register = ({ setOtpState }) => {
     const handleOnchange = (event) => {
         setIsChecked(event.target.checked);
     };
-
+     useEffect(()=>{
+        async function Checkuser(){
+            const response = await fetch("http://localhost:8000/verified",{
+                method:"GET",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },});
+                const json = await  response.json()
+                console.log(json)
+                if(json.message ==="success") navigate('/home')
+                else navigate('/')
+        }
+        Checkuser();
+     },[])
     const handleOnClick = async (e) => {
         if (credentials.username === "" || credentials.password === "" || credentials.email === "" || credentials.cpassword === "") { alert('Please fill credentials') } 
         else {

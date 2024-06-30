@@ -37,7 +37,7 @@ export default function Allsongs({ current, setCurrent,add,setAdd }) {
   return(
       <>
     
-      <div className='your-playlist h-96'>
+      <div className='your-playlist h-96 mt-14'>
       <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Songs</h1>
        <Search songs={add}/>
       {

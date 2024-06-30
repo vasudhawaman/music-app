@@ -6,21 +6,14 @@ const User = require('./models/User')
 const mongoose =require('mongoose');
 const cookieParser = require('cookie-parser')
 const verifyToken = require('./middleware/verifyToken');
-const setToken = require('./middleware/setToken')
-const redis = require('redis')
-const redisClient = redis.createClient()
+const setToken = require('./middleware/setToken');
 mongoose.connect("mongodb://localhost:27017");
 const db =mongoose.connection;
 db.on('error',console.error.bind(console,'connection error!!'));
 
 const app = express();
 app.use(cookieParser())
-// var allowCrossDomain = function(req, res, next) {
-//      res.header('Access-Control-Allow-Origin', '*');
-//      res.header('Access-Control-Allow-Methods', 'GET,POST');
-//      next();
-//  }
-//  app.use(allowCrossDomain)
+
 app.use(express.json())
 app.use(cors(
      {
@@ -39,10 +32,10 @@ app.get('/song',async (req,res)=>{
      const result = await Music.find();
      res.json(result)
 });
-app.get('/:token' ,(req,res)=>{
+app.get('/createToken/:token' ,(req,res)=>{
      console.log(req.params.token)
      res.cookie('token_musify',String(req.params.token),{
-          maxAge:24*60*60*7*1000,
+          maxAge:24*60*60*7*1000*3,
       }).send({message:"success"})
     
 })
@@ -63,14 +56,10 @@ app.post('/upload',verifyToken ,async(req,res)=>{
        }catch(err){
           console.log(err)
             res.status(400).json({message:"Not uploaded"})
-       }
-    
+       } 
 })
-app.post('/saved',verifyToken,async(req,res)=>{
-          const {songs} =req.body;
-          if(redisClient.exists("cache") === 0) redisClient.setEx("song1",24*7*60*60,JSON.stringify(songs))
-          res.json("sucess")
-
+app.get('/verified',verifyToken,(req,res)=>{
+      res.status(200).json({message:"success"})
 })
 app.listen(8000,()=>{
      console.log("Listening on port 8000");

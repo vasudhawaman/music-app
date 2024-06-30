@@ -50,15 +50,15 @@ export default function Playlist({add,setAdd}){
         <>
      <div className="h-screen w-screen bg-black">
         
-      <div className="grid grid-cols-4 h-1/6 w-full">
-          <div className="col-span-1 bold content-center"
+      <div className="grid grid-cols-1 sm:grid-cols-4 h-64 w-full">
+          <div className="col-span-1 bold content-center mt-14"
           >
-         {  data? <img src={ data.cover} className="object contain h-3/5 w-full md:w-3/5 pl-10" /> : <img src={ image} className="object contain h-3/5 w-full md:w-3/5 pl-10" /> }
+         {  data? <img src={ data.cover} className="object-contain h-36 sm:h-3/5 w-full md:w-3/5 pl-10" /> : <img src={ image} className="object-contain h-3/5 w-full md:w-3/5 pl-10" /> }
           </div>
-          <div className="col-span-3 h-1/6 pt-8 pl-4 text-left text-orange-500  border-x-fuchsia-600">
-           <h1 className="font-bold text-lg">{name}</h1>
+          <div className="col-span-1 sm:col-span-3 h-1/6 pt-8 pl-4 text-left text-orange-300  border-x-fuchsia-600">
+           <h1 className="font-bold text-lg mb-2 sm:mb-0 ml-2 sm:ml-3">{name}</h1>
            <h3 className="text-md">Created By: </h3>
-           <h6 className="text-sm">Total songs: Time: </h6>
+           <h6 className="text-sm mb-1 sm:mb-0">Total songs: Time: </h6>
           </div>
       </div>
       <Playplaylist setCurrent={setCurrent} songs={songs}/>

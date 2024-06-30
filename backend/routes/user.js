@@ -4,6 +4,8 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const Follow = require('../models/Follow')
+const verifyToken =require("../middleware/verifyToken")
 const nodemailer = require('nodemailer');
 var jwt = require('jsonwebtoken');
 const axios = require('axios')
@@ -91,10 +93,12 @@ router.post('/signup', [
             }
         }
 
-        const authToken=jwt.sign(data,JWT_SECRET)
+      
 
         await user.save();
-        res.json(authToken);
+        const authToken= jwt.sign(data,JWT_SECRET,{expiresIn:'7 days'})
+       
+        res.redirect(`/createToken/${authToken}`)
 
 
     } catch (err) {
@@ -136,11 +140,10 @@ router.post('/login', [
                 id:user.id
             }
         }
-        const authToken= jwt.sign(data1,JWT_SECRET,{expiresIn:'7d'})
+        const authToken= jwt.sign(data1,JWT_SECRET,{expiresIn:'7 days'})
        
-         res.redirect(`/${authToken}`)
-       
-        
+         res.redirect(`/createToken/${authToken}`)
+   
     }
     catch {
         return res.status(500).json({message:"Sorry! Server error has been detected"})
@@ -215,6 +218,60 @@ router.put('/changepass',async (req, res) => {
     }
 }
 )
-
+router.get("/profile",verifyToken,async(req,res)=>{
+        const id =req.id;
+       
+       try{
+        const user = await User.find({_id:id});
+        res.status(200).json(user);
+       }catch(err){
+               res.status(400).json({message:"Not found"});
+       }
+       
+})
+router.get("/all",verifyToken,async(req,res)=>{
+    const id =req.id;
+   
+   try{
+    const user = await User.find({_id:{$nin:[id]}});
+    res.status(200).json(user);
+   }catch(err){
+           res.status(400).json({message:"Not found"});
+   }
+   
+})
+router.post('/allfollow', verifyToken, async (req, res) => {
+     
+    const { id } = req.body;
+    const user = await User.find({ _id: id })
+    const person = await User.find({_id: req.id})
+     
+     const user1 = await Follow.findOne({ followerusername: person[0].username, followingusername: user[0].username })
+     console.log(user1)
+     if (!user1) {
+           const data = new Follow(
+                 {
+                       followerusername: person[0].username,
+                       followingusername: user[0].username,
+                       email: user[0].email
+                 }
+           )
+           data.save()
+           res.status(200).json({message:"Success"})
+     }
+     else {
+           res.json('all ready following')
+     }
+})
+router.get('/followers',verifyToken,  async (req, res) => {
+    const user = await User.find({_id:req.id})
+    const users = await Follow.find({followingusername: user[0].username});
+    res.json(users)
+})
+router.get('/followings',verifyToken,  async (req, res) => {
+    const user = await User.find({_id:req.id})
+    const users = await Follow.find({followerusername: user[0].username});
+    res.json(users)
+})
 
 module.exports = router;

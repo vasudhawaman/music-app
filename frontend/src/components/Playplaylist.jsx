@@ -24,10 +24,10 @@ export default function Playplaylist({setCurrent,songs}){
       //   )
       //  }
      return(
-        <div className="text-left pl-5 h-2/6">
-        <PlayCircleIcon style={{color: " rgb(249 ,115, 22)",fontSize: "5em"}} onClick={
+        <div className="text-left pl-5 h-1/6 ">
+        <PlayCircleIcon  className="text-base sm:text-2xl text-orange-300"onClick={
           playSongs}/>
-        <RepeatIcon style={{color: "rgb(249 ,115, 22)",fontSize: "5em"}} />
+        <RepeatIcon  className="text-base sm:text-2xl text-amber-300" />
       </div>
      )
 }

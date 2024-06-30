@@ -22,11 +22,7 @@ const Home = () => {
         <Yourplaylist/>
         <Smallcards/>
         <Recommdation width={width}/>
-        
         <Footer/>
-        <div className='bottom-0 sticky w-screen'>
-          <SongPlayer/>
-        </div>
     </div>
     </div>
   )

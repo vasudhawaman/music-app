@@ -13,7 +13,6 @@ import {
     Route,
     Link
   } from "react-router-dom";
-
 export default function Allplaylist({current,setCurrent}){
       const [playlists,setPlaylists] =useState([])
     useEffect(()=>{
@@ -31,19 +30,12 @@ export default function Allplaylist({current,setCurrent}){
     return(
         <>
          
-        <div className='your-playlist h-96'>
-        <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Your Playlists</h1>
-        <div className="mb-4">
-                <h1 className='my-5 font-bold text-2xl text-orange-300'>Featured Playlists</h1>
-                <div className='flex overflow-auto text-orange-300'>
-                    {albumsData.map((item, index) => (<AlbumItem key={index} name={item.name} desc={item.desc} id={item.id} image={item.image} />))}
-                <h1 className='my-5 font-bold text-2xl'>Featured Playlists</h1>
-                <div className='flex overflow-auto'>
-                <Create/>
-                </div>
+        <div className='your-playlist h-56 mt-14'>
+        <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-2xl mt-5 '>Your Playlists</h1>
+        <Create/>
+        <div className="all-card flex mt-4" >
 
-            </div>
-        <div className="all-card flex" >
+       
         {
            playlists.length>0 &&  playlists.map((page)=>{
                return  <PlaylistCard name={page.name} cover={page.cover}/>;
@@ -51,10 +43,6 @@ export default function Allplaylist({current,setCurrent}){
         }
         </div>
        
-        </div>
-        <Create/>
-        <div className='bottom-0 sticky w-screen'>
-          <SongPlayer/>
         </div>
        
         </>

@@ -12,6 +12,13 @@ export default function Control({current,setCurrent,nextSong,setPlay}){
     const [value,setValue] = useState(0);
       const [maxValue,setMax] =useState(0);
       const [isPlaying,setPlaying] = useState(true)
+      const song = document?.getElementById("audio");
+       song?.addEventListener("ended",()=>{
+        document.getElementById("play").classList.remove("hidden")
+        document.getElementById("pause").classList.remove("text-center")
+        document.getElementById("pause").classList.add("hidden")
+         nextSong(current.index +1);
+       })
     function handleValue(e){
          
           const song = document.getElementById("audio");
@@ -78,20 +85,20 @@ export default function Control({current,setCurrent,nextSong,setPlay}){
         nextSong(current.index -1)
     }
       return(
-        <div className="h-1/3 pl-5 pr-5 text-orange-500 bg-black ml-0">
+        <div className="h-1/3 pl-5 pr-5 text-orange-300 bg-black ml-0">
               <div>{`${Math.floor(value /60)}`+':'+`${Math.floor(value % 60)}`}</div>
          <div class="bg-black">
             <input type="range" min="0" max={maxValue}  id="myRange" className="w-full " value={value} style={{accentColor:"rgb(249 ,115, 22)"}} onChange={handleValue} />
          </div>
          <div className="flex justify-center items-center bg-black">
          <div className="flex mt-0  bg-black">
-            <div className="bg-black"><Replay10Icon className="text-left"style={{color: " rgb(249 ,115, 22)",fontSize: "2em"}} onClick={replay10}/></div>
-            <div> <SkipPreviousIcon className="text-left"style={{color: " rgb(249 ,115, 22)",fontSize: "2em"}} onClick={backwardTO}/></div>
-            <div id="play"> <PlayCircleIcon  className="text-center"style={{color: " rgb(249 ,115, 22)",fontSize: "3em"}} onClick={handlePlay}/></div>
-            <div id="pause" className="hidden"> <PauseIcon  className="hidden" style={{color: " rgb(249 ,115, 22)",fontSize: "3em"}} onClick={handlePause} /></div>
-            <div> <SkipNextIcon className="text-right" style={{color: " rgb(249 ,115, 22)",fontSize: "2em"}} onClick={forwardTO}/></div>
+            <div className="bg-black"><Replay10Icon className="text-left text-md sm:text-3xl text-orange-300"  onClick={replay10}/></div>
+            <div> <SkipPreviousIcon className="text-left text-md sm:text-3xl text-orange-300" onClick={backwardTO}/></div>
+            <div id="play"> <PlayCircleIcon  className="text-center text-md sm:text-3xl text-orange-300"  onClick={handlePlay}/></div>
+            <div id="pause" className="hidden text-md sm:text-3xl text-o"> <PauseIcon  className="hidden"  onClick={handlePause} /></div>
+            <div> <SkipNextIcon className="text-right text-xs sm:text-3xl text-orange-300"  onClick={forwardTO}/></div>
          
-            <div><Forward10Icon  className="text-right" style={{color: " rgb(249 ,115, 22)",fontSize: "2em"}} onClick={forward10} /></div>
+            <div><Forward10Icon  className="text-right text-md sm:text-3xl text-orange-300"  onClick={forward10} /></div>
         
          <audio id="audio" src={now.audio} hidden></audio>
         </div>
