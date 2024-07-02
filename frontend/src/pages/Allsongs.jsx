@@ -39,7 +39,7 @@ export default function Allsongs({ current, setCurrent,add,setAdd }) {
     
       <div className='your-playlist h-96 mt-14'>
       <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Songs</h1>
-       <Search songs={add}/>
+       <Search songs={add}/>  {/* this is a dialog box for searching playlist to add songs to with id = dialog*/}
       {
          songs.length>0 &&  songs.map((s,i)=>{
             return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current} setCurrent={setCurrent} add={add} setAdd={setAdd} />

@@ -40,7 +40,7 @@ export default function Search({songs}){
     }
    async function add(e){
         const name =e.target.value;
-        console.log(songs)
+        console.log(name)
          const url = 'http://localhost:8000/playlist/add';
          const response = await fetch(url, {
              method: "PUT",
@@ -66,7 +66,7 @@ export default function Search({songs}){
 <form class="max-w-sm mx-auto" method="POST" onSubmit={handlesubmit}>
   <div class="mb-5">
    
-    <input type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" name="name" onChange={handleonchange} required />
+    <input type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search playlists" name="name" onChange={handleonchange} required />
   </div>
   
   {

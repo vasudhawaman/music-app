@@ -34,7 +34,7 @@ function App() {
   const[forgetotp,setforgetotp]=useState();
   const [current,setCurrent] = useState(null);
   const [username,setusername]=useState(''); 
-  
+  const [add,setAdd] = useState(null)
   useEffect(()=>{
       async function getUser(){
         const response = await fetch("http://localhost:8000/auth/profile",{
@@ -67,8 +67,8 @@ function App() {
           <Route path='/playlist' element={<Allplaylist current={current} setCurrent={setCurrent}/>}/>
           <Route path='/album/:id' element={<InsidePlaylist/>}/>
           <Route path='/artist' element={<Allartist/>}/>
-          <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent}/>}/>
-          <Route path ='/player/:name' element={<Playlist/>} />
+          <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent} add={add} setAdd={setAdd}/>}/>
+          <Route path ='/player/:name' element={<Playlist add={add} setAdd={setAdd}/>} />
           <Route path='/upload' element={<Upload/>}/>  
           <Route path='/profile' element={<Ownprofile username={username} />} />
           <Route path='/followings' element={<Followings username={username} />} />

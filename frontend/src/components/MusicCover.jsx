@@ -18,8 +18,7 @@ export default function MusicCover({song,artist,cover,audio,index,current,setCur
       function setsong(){
        
        setCurrent({now:obj,play:false,index:index})
-           const anchor = document.getElementById('controls')
-          anchor?.scrollIntoView({ behavior: 'smooth' })
+           
       }
      async function deleteSong(){
       const url = `http://localhost:8000/playlist/${name}`;
@@ -27,7 +26,7 @@ export default function MusicCover({song,artist,cover,audio,index,current,setCur
         headers: {
           "Content-Type": "application/json",
       },
-        body: JSON.stringify({song:obj})
+        body: JSON.stringify({song:add})
       });
      
       }
