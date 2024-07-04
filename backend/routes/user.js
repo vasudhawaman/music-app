@@ -8,7 +8,8 @@ const Follow = require('../models/Follow')
 const verifyToken =require("../middleware/verifyToken")
 const nodemailer = require('nodemailer');
 var jwt = require('jsonwebtoken');
-const axios = require('axios')
+const axios = require('axios');
+const Playlist = require('../models/Playlist');
 const JWT_SECRET = 'Krishkrishpathak@happend#';
 
 router.post('/cheak', [
@@ -273,5 +274,11 @@ router.get('/followings',verifyToken,  async (req, res) => {
     const users = await Follow.find({followerusername: user[0].username});
     res.json(users)
 })
-
+router.post('/profile',verifyToken, async (req,res)=>{
+    const { username } = req.body;
+    const user = await User.findOne({username:username.user});
+    console.log(user._id)
+    const playlists=await Playlist.find({userId:user._id})
+    res.json({user:user, playlist:playlists});
+    })
 module.exports = router;
