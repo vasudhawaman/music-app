@@ -5,7 +5,11 @@ module.exports = {
 
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'max-sm': { 'max': '809px' }, // Define custom max-width for screens below 810px
+      },
+    },
   },
   plugins: [],
 }

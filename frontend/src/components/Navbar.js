@@ -35,12 +35,10 @@ const Navbar = () => {
                         </div>
                         <div className="flex items-center space-x-4">
                             <div className="relative">
-                                 {/* <input 
+                                 <input 
                                     type="text" 
                                     className="searchbar block w-full px-3 py-2 border border-gray-300 rounded-md text-sm text-black placeholder-gray-500 focus:outline-none focus:ring-orange-300 focus:border-orange-300 sm:text-sm"
-                                    placeholder="Search..."
-                                onChange={handleonchange}
-                                value={credentials}/>  */}
+                                    placeholder="Search..."/> 
                             </div>
                             <div className="relative">
                                 <Link to="/profile">
