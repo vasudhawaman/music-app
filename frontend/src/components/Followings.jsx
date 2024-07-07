@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useContext} from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import { SearchContext } from "../context/SearchContext";
 const Followings = ({ username }) => {
   console.log({ username })
   const [user, setusers] = useState([]);
   const [data, setdata] = useState([])
-
+  const {search,setSearch} = useContext(SearchContext);
+   
   const handleondelete=(id)=>{
    console.log(id)
     const url = 'http://localhost:8000/playlist/deletefollower';
@@ -25,6 +26,22 @@ const Followings = ({ username }) => {
    deleteFollower();
   }
   useEffect(() => {
+    if(search){
+      console.log(search,"useEffectran")
+      const url = 'http://localhost:8000/search/following';
+      fetch(url, { method: "POST", credentials: "include",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body:JSON.stringify({name:search}),
+      }).then((response) => {
+          response.json().then((data) => {
+              setusers(data)
+          })
+      }).catch((e) => {
+          console.log(e)
+      })
+  }else{
     const url = 'http://localhost:8000/auth/followings';
 
     async function alluser() {
@@ -49,7 +66,8 @@ const Followings = ({ username }) => {
     }
 
     alluser();
-  }, []);
+  }
+  }, [search]);
 
   useEffect(() => {
     console.log(user)

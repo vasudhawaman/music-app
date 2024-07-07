@@ -1,39 +1,47 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect ,useContext} from "react"
 import AudioHover from "../components/AudioHover";
 import MusicCover from "../components/MusicCover";
 import Search from "../components/Search"
 import { songsData } from '../assets/assets'
 import Songitem from "../components/Songitem";
-export default function Allsongs({ current, setCurrent,add,setAdd }) {
-    const [songs, setSongs] = useState([])
+import { SearchContext } from "../context/SearchContext";
+import { PlayerContext } from "../context/PlayerContext";
+export default function Allsongs({ add,setAdd }) {
+    const {
+        songs,setSongs
+      } = useContext(PlayerContext)
+    const {search,setSearch} = useContext(SearchContext);
    
     useEffect(() => {
-        const url = 'http://localhost:8000/song';
-        fetch(url, { method: "GET", credentials: "include" }).then((response) => {
-            response.json().then((data) => {
-                setSongs(data)
+       
+        if(search){
+            console.log(search,"useEffectran")
+            const url = 'http://localhost:8000/search/song';
+            fetch(url, { method: "POST", credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body:JSON.stringify({song:search}),
+            }).then((response) => {
+                response.json().then((data) => {
+                    setSongs(data)
+                })
+            }).catch((e) => {
+                console.log(e)
             })
-        }).catch((e) => {
-            console.log(e)
-        })
-
-
-    }, [])
-    function nextSong(index) {
-        if (index < songs.length && index >= 0) {
-            setCurrent({
-
-                now: songs[index],
-                play: true,
-                index: index,
-                length: songs.length
+        }else{
+            const url = 'http://localhost:8000/search/all';
+            fetch(url, { method: "GET", credentials: "include" }).then((response) => {
+                response.json().then((data) => {
+                    setSongs(data)
+                })
+            }).catch((e) => {
+                console.log(e)
             })
-
-        } else {
-            setCurrent(null)
         }
-    }
 
+    }, [search])
+    
   return(
       <>
     
@@ -42,12 +50,12 @@ export default function Allsongs({ current, setCurrent,add,setAdd }) {
        <Search songs={add}/>  {/* this is a dialog box for searching playlist to add songs to with id = dialog*/}
       {
          songs.length>0 &&  songs.map((s,i)=>{
-            return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current} setCurrent={setCurrent} add={add} setAdd={setAdd} />
+            return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i}  add={add} setAdd={setAdd} />
            })
       }
      
      <div className="text-left w-screen bg-black z-10">
-     { current ? <AudioHover current={current} setCurrent={setCurrent}  nextSong={nextSong} /> : null }
+     { <AudioHover  /> }
       </div>
      </div>
       </>

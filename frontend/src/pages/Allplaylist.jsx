@@ -1,4 +1,4 @@
-import react,{useEffect,useState} from "react"
+import react,{useEffect,useState,useContext} from "react"
 import SongPlayer from "../components/SongPlayer";
 import Yourplaylist from "../components/Yourplaylist";
 import PlaylistCard from "../components/PlaylistCard";
@@ -13,10 +13,38 @@ import {
     Route,
     Link
   } from "react-router-dom";
-export default function Allplaylist({current,setCurrent}){
-      const [playlists,setPlaylists] =useState([])
+  import { SearchContext } from "../context/SearchContext";
+  import { PlayerContext } from "../context/PlayerContext";
+export default function Allplaylist(){
+      const [playlists,setPlaylists] =useState([]);
+      const {search} = useContext(SearchContext);
+      const {
+        audioRef,
+        current,setCurrent,
+        songs,setSongs,nextSong,
+        playStatus,setPlayStatus,
+        play,pause,
+        
+       
+      } = useContext(PlayerContext)
     useEffect(()=>{
-        const url = 'http://localhost:8000/playlist/all';
+
+        if(search){
+            const url = 'http://localhost:8000/search/playlist';
+            fetch(url, { method: "POST", credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body:JSON.stringify({name:search}),
+            }).then((response) => {
+                response.json().then((data) => {
+                    setPlaylists(data)
+                })
+            }).catch((e) => {
+                console.log(e)
+            })
+        }
+       else{ const url = 'http://localhost:8000/playlist/all';
          fetch(url,{method:"GET",credentials:"include"}).then((response)=>{
            response.json().then((data)=>{
                setPlaylists(data)
@@ -24,9 +52,9 @@ export default function Allplaylist({current,setCurrent}){
         }).catch((e)=>{
             console.log(e)
         })
-       
+    }
 
-    },[])
+    },[search])
     return(
         <>
          

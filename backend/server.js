@@ -1,7 +1,7 @@
 const express = require('express');
 const cors =require('cors');
 const bodyParser =require('body-parser');
-const Music = require('./model');
+const Music = require('./models/Music');
 const User = require('./models/User')
 const mongoose =require('mongoose');
 const cookieParser = require('cookie-parser')
@@ -13,7 +13,6 @@ db.on('error',console.error.bind(console,'connection error!!'));
 
 const app = express();
 app.use(cookieParser())
-
 app.use(express.json())
 app.use(cors(
      {
@@ -28,10 +27,9 @@ app.use(bodyParser.urlencoded({extended :false}));
 app.use(express.urlencoded({extended: false}));
 app.use('/auth',require('./routes/user'))
 app.use('/playlist', require('./routes/playlist'));
-app.get('/song',async (req,res)=>{
-     const result = await Music.find();
-     res.json(result)
-});
+app.use('/search',require('./routes/search'));
+app.use('/like',require('./routes/like'));
+
 app.get('/createToken/:token' ,(req,res)=>{
      console.log(req.params.token)
      res.cookie('token_musify',String(req.params.token),{

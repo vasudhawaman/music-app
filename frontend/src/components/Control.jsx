@@ -1,71 +1,68 @@
-import React ,{useState,useEffect} from "react";
+import React ,{useState,useEffect,useContext} from "react";
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import Forward10Icon from '@mui/icons-material/Forward10';
 import Replay10Icon from '@mui/icons-material/Replay10';
 import PauseIcon from '@mui/icons-material/Pause';
+import { PlayContext } from "../context/PlayContext";
+import { PlayerContext } from "../context/PlayerContext";
+export default function Control(){
+  const {start,setStart} = useContext(PlayContext)
+  const {
+    audioRef,
+    current,setCurrent,
+    songs,setSongs,nextSong,
+    playStatus,setPlayStatus,
+    play,pause,
+  } = useContext(PlayerContext)
+  
+       useEffect(()=>{
+        
+      if(current){
+        audioRef.current.ontimeupdate = () => {
+          setValue(audioRef.current.currentTime);
+      
+       }
+      }
+      if(start){
+        audioRef.current.play()
+        setMax(audioRef.current.duration);
+   
+        audioRef.current.ontimeupdate = () => {
+          setValue(audioRef.current.currentTime);
+      
+       }
+        
+      }
+       },[playStatus,start])
 
-export default function Control({current,setCurrent,nextSong,setPlay}){
-    const {now} = current;
-    console.log(now)
     const [value,setValue] = useState(0);
       const [maxValue,setMax] =useState(0);
-      const [isPlaying,setPlaying] = useState(true)
-      const song = document?.getElementById("audio");
-       song?.addEventListener("ended",()=>{
-        document.getElementById("play").classList.remove("hidden")
-        document.getElementById("pause").classList.remove("text-center")
-        document.getElementById("pause").classList.add("hidden")
-         nextSong(current.index +1);
-       })
+      const [isPlaying,setPlaying] = useState(false)
+
     function handleValue(e){
          
           const song = document.getElementById("audio");
-           setPlaying((prev)=> {return !prev})
-          song.currentTime = e.target.value;
+         
+          audioRef.current.currentTime = e.target.value;
           setValue(e.target.value)
+          setPlayStatus(true)
           
     }
     function handlePlay(){
-      const song = document?.getElementById("audio");
-          document?.getElementById("play").classList.add("hidden")
-          document?.getElementById("pause").classList.remove("hidden")
-          document?.getElementById("pause").classList.add("text-center")
-         
-         setMax(song.duration);
-        song?.play()
-       song?.addEventListener("timeupdate",()=>{
-        setValue(()=>{
-        if(isPlaying) return song?.currentTime
-        
-        })
-       }) 
+     
+      setPlayStatus(true)
+      play()
+      setMax(audioRef.current.duration);
+   
     }
-  //   if(current.play){
-  //     nextSong(current.index +1)
-  //  }
-   if(current.play){
   
-    
-      const song = document?.getElementById("audio");
-       song?.play()
-    song?.addEventListener("ended",()=>{
-      document.getElementById("play").classList.remove("hidden")
-      document.getElementById("pause").classList.remove("text-center")
-      document.getElementById("pause").classList.add("hidden")
-       
-        setPlay(true)
-        nextSong(current.index+1)
-    })
-   }
     function handlePause(){
-       
-        document.getElementById("play").classList.remove("hidden")
-        document.getElementById("pause").classList.remove("text-center")
-        document.getElementById("pause").classList.add("hidden")
-        const song = document?.getElementById("audio");
-        song.pause()
+      //  setPlaying(false);
+      setPlayStatus(false)
+      setStart(false)
+      pause()
     }
     function replay10(){
       const song = document.getElementById("audio");
@@ -80,9 +77,11 @@ export default function Control({current,setCurrent,nextSong,setPlay}){
     function forwardTO(){
       console.log(current.index)
         nextSong(current.index+1)
+        setPlayStatus(false)
     }
     function backwardTO(){
         nextSong(current.index -1)
+        setPlayStatus(false)
     }
       return(
         <div className="h-1/3 pl-5 pr-5 text-orange-300 bg-black ml-0">
@@ -94,13 +93,14 @@ export default function Control({current,setCurrent,nextSong,setPlay}){
          <div className="flex mt-0  bg-black">
             <div className="bg-black"><Replay10Icon className="text-left text-md sm:text-3xl text-orange-300"  onClick={replay10}/></div>
             <div> <SkipPreviousIcon className="text-left text-md sm:text-3xl text-orange-300" onClick={backwardTO}/></div>
-            <div id="play"> <PlayCircleIcon  className="text-center text-md sm:text-3xl text-orange-300"  onClick={handlePlay}/></div>
-            <div id="pause" className="hidden text-md sm:text-3xl text-o"> <PauseIcon  className="hidden"  onClick={handlePause} /></div>
+            {playStatus? 
+             <PauseIcon className="text-center text-base text-orange-300" onClick={handlePause} /> : <PlayCircleIcon  className="text-center text-md sm:text-3xl text-orange-300"  onClick={handlePlay}/>
+            }
             <div> <SkipNextIcon className="text-right text-xs sm:text-3xl text-orange-300"  onClick={forwardTO}/></div>
          
             <div><Forward10Icon  className="text-right text-md sm:text-3xl text-orange-300"  onClick={forward10} /></div>
         
-         <audio id="audio" src={now.audio} hidden></audio>
+        {current ? <audio id="audio" src={current.now.audio} ref={audioRef} hidden /> : null}
         </div>
        
          </div>

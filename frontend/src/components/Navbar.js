@@ -3,33 +3,10 @@ import { FaCompactDisc } from "react-icons/fa6";
 import { MdOutlinePlaylistPlay } from "react-icons/md";
 import {Link, Outlet} from "react-router-dom"
 import {Link as Link2} from "react-scroll"
+import SearchBar from './SearchBar';
 const Navbar = () => {
     const [open,setOpen] =useState(false)
-    // const [credentials, setcredentials] = useState("")
-    // const handlesubmit = async (e) => {
-    //     e.preventDefault();
-    //     const url = 'http://localhost:8000/auth/login';
-    //     const response = await fetch(url, {
-    //         method: "POST",
-    //         credentials: "include",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ username: credentials.username, password: credentials.password })
-    //     });
-
-    //     const json = await response.json();
-    //     console.log(response.cookies);
-    //     const{message}=json;
-    //     if(message!==undefined){
-    //     alert(message)}
-    //     if(message ==="success") navigate('/home')
-       
-    // }
-    // const handleonchange = (e) => {
-    //     setcredentials({ ...credentials, [e.target.name]: e.target.value })
-    //     console.log(credentials);
-    // }
+   
     function opensidebar(){
            setOpen((prev)=> !prev)
     }
@@ -52,6 +29,7 @@ const Navbar = () => {
                                 <Link to="/artist" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Artists</Link>
                                 <Link to="/playlist" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Playlist</Link>
                                 <Link to="/upload" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Upload Song</Link>
+                                <SearchBar/>
                                 </div>
                             </div>
                         </div>

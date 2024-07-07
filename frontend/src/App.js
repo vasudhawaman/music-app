@@ -14,25 +14,23 @@ import Otp from './screen/Login/Otp';
 import Changepass from './screen/Login/Changepass';
 import Otp1 from './screen/Register/Otp1';
 import Home from './components/Home';
-
 import Allplaylist from './pages/Allplaylist';
 import Allartist from './pages/Allartists';
 import Allsongs from './pages/Allsongs';
 import Playlist from './components/Playlist'
-
 import Upload from './components/Upload';
 import Navbar from './components/Navbar';
-
 import ProfilePage from './components/ProfilePage';
 import InsidePlaylist from './components/InsidePlaylist';
 import Otherusers from './components/Otherusers';
 import Ownprofile from './components/Ownprofile';
 import Follower from './components/Follower';
-import Followings from './components/Followings'
+import Followings from './components/Followings';
+import { SearchContextProvider } from './context/SearchContext';
 function App() {
   const[otpState,setOtpState]=useState()
   const[forgetotp,setforgetotp]=useState();
-  const [current,setCurrent] = useState(null);
+ 
   const [username,setusername]=useState(''); 
   const [add,setAdd] = useState(null)
   useEffect(()=>{
@@ -62,12 +60,13 @@ function App() {
           <Route path='/otp' element={<Otp forgetotp={forgetotp}/>}/>
           <Route path='/change' element={<Changepass forgetotp={forgetotp}/>}/>
           <Route path='/otp1' element={<Otp1 otpState={otpState}/>}/>
+         
           <Route path='/home' element={<Home/>}/>
           <Route element={<Navbar/>} >
-          <Route path='/playlist' element={<Allplaylist current={current} setCurrent={setCurrent}/>}/>
+          <Route path='/playlist' element={<Allplaylist />}/>
           <Route path='/album/:id' element={<InsidePlaylist/>}/>
           <Route path='/artist' element={<Allartist/>}/>
-          <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent} add={add} setAdd={setAdd}/>}/>
+          <Route path='/songs' element={<Allsongs  add={add} setAdd={setAdd}/>}/>
           <Route path ='/player/:name' element={<Playlist add={add} setAdd={setAdd}/>} />
           <Route path='/upload' element={<Upload/>}/>  
           <Route path='/profile' element={<Ownprofile username={username} />} />
@@ -76,7 +75,7 @@ function App() {
             <Route path='/allusers' element={<Otherusers username={username}/>}/>
           </Route> 
          
-                 
+         
           </Routes>
        
       </Router>

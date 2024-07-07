@@ -1,7 +1,21 @@
 import React, { useContext } from 'react'
 import {assets} from '../assets/assets'
 import { songsData } from '../assets/assets'
+import { PlayerContext } from '../context/PlayerContext'
 const SongPlayer = ()=>{
+   const {
+        audioRef,
+        seekBar,
+        seekBg,
+        track,setTrack,
+        playStatus,setPlayStatus,
+        time,setTime,
+        play,pause,
+        playWithId,
+        previous,next,
+        seekSong
+      }
+         =useContext(PlayerContext) ;
     return(
         <>
           <div className='h-[10%] bg-black flex justify-between items-center text-white px-4'>

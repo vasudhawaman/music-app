@@ -17,6 +17,7 @@ export default function Upload(){
      try{
       const fileUrl = await uploadCover(form.cover)
         const songUrl = await uploadSong(form.audio)
+        const songName = form.song.replace(/\+s/g,"-")
       console.log(fileUrl)
       const url = 'http://localhost:8000/upload';
       const response = await fetch(url, {

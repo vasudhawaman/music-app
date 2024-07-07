@@ -1,17 +1,20 @@
-import React,{useEffect,useState,useReducer} from "react";
+import React,{useEffect,useState,useReducer, useContext} from "react";
 import { useParams } from "react-router-dom";
 import image from './vasudha.jpg'
 import MusicCover from "./MusicCover";
 import Control from "./Control";
 import AudioHover from "./AudioHover";
 import Playplaylist from "./Playplaylist";
+import { PlayContextProvider } from "../context/PlayContext";
+import { PlayerContext } from "../context/PlayerContext";
 
 export default function Playlist({add,setAdd}){
+ 
+       const {
         
-        //   const shuffle = (array: string[]) => { 
-        //     return array.sort(() => Math.random() - 0.5); 
-        // }; 
-       
+        current,
+        songs,setSongs
+      } = useContext(PlayerContext)
         const {name}= useParams();
         console.log(name)
         useEffect(()=>{
@@ -27,25 +30,11 @@ export default function Playlist({add,setAdd}){
            
     
         },[])
-        const [songs,setSongs] =useState([])
+      
         const [data,setData] =useState(null)
-        const [current,setCurrent] =useState(null)
-        const [play,setPlay] = useState(false)
-         console.log(typeof(songs))
-   function nextSong(index){
-       if(index <songs.length && index >=0){
-            setCurrent({
-                
-                now: songs[index],
-                play:play,
-                index:index,
-                length:songs.length
-            })
        
-       }else{
-        setCurrent(null)
-       }
-   }
+       
+  
       return(
         <>
      <div className="h-screen w-screen bg-black">
@@ -61,13 +50,13 @@ export default function Playlist({add,setAdd}){
            <h6 className="text-sm mb-1 sm:mb-0">Total songs: Time: </h6>
           </div>
       </div>
-      <Playplaylist setCurrent={setCurrent} songs={songs}/>
+      <Playplaylist />
       {songs.map((s,i)=>{
        
-                return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i} current={current}  setCurrent={setCurrent} add={add} setAdd={setAdd}/>
+                return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i}  add={add} setAdd={setAdd}/>
       })}
     <div className="text-left w-screen bg-black z-10 ">
-      {  current ? <AudioHover current={current} setCurrent={setCurrent}  nextSong={nextSong} setPlay={setPlay}/> : null }
+      {  current ? <AudioHover /> : null }
       </div>
       </div>
      

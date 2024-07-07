@@ -22,6 +22,7 @@ const Home = () => {
         <Yourplaylist/>
         <Smallcards/>
         <Recommdation width={width}/>
+        <SongPlayer/>
         <Footer/>
     </div>
     </div>
