@@ -16,11 +16,17 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "express-validator": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.5",
     "nodemailer": "^6.9.13",
+<<<<<<< HEAD
     "nodemon": "^3.1.4",
+=======
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+>>>>>>> 3fde9f8dda433010c19782f0071e47738cc1de1d
     "redis": "^4.6.14"
   }
 }
