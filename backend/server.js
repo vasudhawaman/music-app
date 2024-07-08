@@ -48,7 +48,6 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/createToken/:token', (req, res) => {
-     console.log(req.params.token)
      res.cookie('token_musify', String(req.params.token), {
           maxAge: 24 * 60 * 60 * 7 * 1000 * 3,
      }).send({ message: "success" })

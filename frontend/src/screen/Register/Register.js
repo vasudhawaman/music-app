@@ -10,6 +10,21 @@ const Register = ({ setOtpState }) => {
     const handleOnchange = (event) => {
         setIsChecked(event.target.checked);
     };
+    const handleOnSubmit =()=>{
+        console.log("hi")
+        async function Checkuser(){
+            const response = await fetch("http://localhost:8000/verified",{
+                method:"GET",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },});
+                const json = await  response.json()
+                console.log(json)
+                if(json.message ==="success") navigate('/home')
+                else navigate('/')}
+            Checkuser()
+    }
      useEffect(()=>{
         async function Checkuser(){
             const response = await fetch("http://localhost:8000/verified",{
@@ -93,7 +108,7 @@ const Register = ({ setOtpState }) => {
                 <div className="tandc1">
                     <input type="checkbox" onChange={handleOnchange} />I agree <a href="/tandc" className="term1" >terms and condition</a> </div>
                 <button className='register1' type='submit' onClick={handleOnClick}> Register</button>
-                <button className='register1' type='submit'><a href="http://localhost:8000/auth/google">Sign up with Google</a></button>
+                <button className='register1' type='submit' onClick={handleOnSubmit}><a href="http://localhost:8000/auth/google">Sign up with Google</a></button>
                 <p className="credentials1">Already have account? <a href="/login" className='login1' >Login</a></p>
             </div>
 

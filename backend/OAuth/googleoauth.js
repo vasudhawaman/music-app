@@ -2,7 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/User');
 
-const jwt =require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 const JWT_SECRET = 'Krishkrishpathak@happend#';
 const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth'
 passport.use(new GoogleStrategy({
@@ -11,20 +11,24 @@ passport.use(new GoogleStrategy({
   callbackURL: "http://localhost:8000/auth/google/callback",
   passReqToCallback: true
 },
-async(request, accessToken, refreshToken, profile, done) => {
-  let user = await User.findOne({email:profile.emails[0].value});
-  if (!user) {
-    user = new User({
-      username: profile.displayName,
-      email: profile.emails[0].value
-    });
-    await user.save();
-    console.log(user.id);
-  }
-  const authToken= jwt.sign(user.id,JWT_SECRET)
+  async (request, accessToken, refreshToken, profile, done) => {
+    let user = await User.findOne({ email: profile.emails[0].value });
+    if (!user) {
+      user = new User({
+        username: profile.displayName,
+        email: profile.emails[0].value
+      });
+      await user.save();
+    }
+    const data1 = {
+      user: {
+        id: user.id
+      }
+    }
+    const authToken = jwt.sign(data1, JWT_SECRET, { expiresIn: '7 days' })
 
-  return done(null,{authToken, profile});
-}));
+    return done(null, { authToken, profile });
+  }));
 
 passport.serializeUser((user, done) => {
   done(null, user);
