@@ -91,9 +91,9 @@ const Register = ({ setOtpState }) => {
                 <p className="credentials1">Username</p>
                 <input type="text" className="credentials-fill1" placeholder='Enter the username' name="username" onChange={handleOnChange} />
                 <div className="tandc1">
-                    <input type="checkbox" onChange={handleOnchange} />I agree <a href="/" className="term1" >terms and condition</a> </div>
+                    <input type="checkbox" onChange={handleOnchange} />I agree <a href="/tandc" className="term1" >terms and condition</a> </div>
                 <button className='register1' type='submit' onClick={handleOnClick}> Register</button>
-
+                <button className='register1' type='submit'><a href="http://localhost:8000/auth/google">Sign up with Google</a></button>
                 <p className="credentials1">Already have account? <a href="/login" className='login1' >Login</a></p>
             </div>
 

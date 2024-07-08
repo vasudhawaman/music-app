@@ -27,6 +27,7 @@ import Ownprofile from './components/Ownprofile';
 import Follower from './components/Follower';
 import Followings from './components/Followings'
 import Followingprofile from './components/Followingprofile';
+import Tandc from './pages/T&C';
 function App() {
  
   const [add,setAdd] = useState(null)
@@ -65,6 +66,7 @@ function App() {
           <Route path='/otp' element={<Otp forgetotp={forgetotp} />} />
           <Route path='/change' element={<Changepass forgetotp={forgetotp} />} />
           <Route path='/otp1' element={<Otp1 otpState={otpState} />} />
+          <Route path='tandc' element={<Tandc />} />
           <Route path='/home' element={<Home />} />
           <Route element={<Navbar />} >
             <Route path='/playlist' element={<Allplaylist current={current} setCurrent={setCurrent} />} />

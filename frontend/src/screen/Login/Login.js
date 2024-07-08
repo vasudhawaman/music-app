@@ -3,6 +3,7 @@ import React from 'react'
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
 import { FaCompactDisc } from "react-icons/fa6";
+import { FaGoogle } from "react-icons/fa";
 const Login = () => {
     const [credentials, setcredentials] = useState({ username: "", password: "" })
     const navigate =useNavigate();
@@ -46,8 +47,9 @@ const Login = () => {
                 <p className="credentials">Password</p>
                 <input type="password" className="credentials-fill" placeholder='Enter your password' name='password' onChange={handleonchange} />
                 <button className='register' type='submit' onClick={handlesubmit}> Login</button>
+                <button className='register1' type='submit'><a href="http://localhost:8000/auth/google"> Sign in with Google</a></button>
                 <a href="/forget" className='forget' >Forget password?</a>
-                <p className="credentials">Don't have account <a href="/register" className='login' >Register</a></p>
+                <p className="credentials">Don't have account <a href="/" className='login' >Register</a></p>
             </div>
 
 

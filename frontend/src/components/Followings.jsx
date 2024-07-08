@@ -24,21 +24,21 @@ const navigate =useNavigate()
     deleteFollower();
   }
   useEffect(() => {
-    if(search){
-      console.log(search,"useEffectran")
-      const url = 'http://localhost:8000/search/following';
-      fetch(url, { method: "POST", credentials: "include",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body:JSON.stringify({name:search}),
-      }).then((response) => {
-          response.json().then((data) => {
-              setusers(data)
-          })
-      }).catch((e) => {
-          console.log(e)
-      })
+    if(0){
+      // console.log(search,"useEffectran")
+      // const url = 'http://localhost:8000/search/following';
+      // fetch(url, { method: "POST", credentials: "include",
+      //     headers: {
+      //         "Content-Type": "application/json",
+      //     },
+      //     body:JSON.stringify({name:search}),
+      // }).then((response) => {
+      //     response.json().then((data) => {
+      //         setusers(data)
+      //     })
+      // }).catch((e) => {
+      //     console.log(e)
+      // })
   }else{
     const url = 'http://localhost:8000/auth/followings';
 
@@ -65,7 +65,7 @@ const navigate =useNavigate()
 
     alluser();
   }
-  }, [search]);
+  }, []);
 
   useEffect(() => {
     setdata(user)
