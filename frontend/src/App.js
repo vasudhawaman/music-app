@@ -27,12 +27,12 @@ import Ownprofile from './components/Ownprofile';
 import Follower from './components/Follower';
 import Followings from './components/Followings'
 import Followingprofile from './components/Followingprofile';
+import JoinRadio from './components/JoinRadio';
 function App() {
  
   const [add,setAdd] = useState(null)
   const [otpState, setOtpState] = useState()
   const [forgetotp, setforgetotp] = useState();
-  const [current, setCurrent] = useState(null);
   const [username, setusername] = useState('');
   
   const [user,setuser]=useState();
@@ -67,10 +67,10 @@ function App() {
           <Route path='/otp1' element={<Otp1 otpState={otpState} />} />
           <Route path='/home' element={<Home />} />
           <Route element={<Navbar />} >
-            <Route path='/playlist' element={<Allplaylist current={current} setCurrent={setCurrent} />} />
+            <Route path='/playlist' element={<Allplaylist />} />
             <Route path='/album/:id' element={<InsidePlaylist />} />
             <Route path='/artist' element={<Allartist />} />
-            <Route path='/songs' element={<Allsongs current={current} setCurrent={setCurrent} add={add} setAdd={setAdd} />} />
+            <Route path='/songs' element={<Allsongs  add={add} setAdd={setAdd} />} />
             <Route path='/player/:name' element={<Playlist add={add} setAdd={setAdd} />} />
             <Route path='/upload' element={<Upload />} />
             <Route path='/profile' element={<Ownprofile username={username} />} />
@@ -78,6 +78,7 @@ function App() {
             <Route path='/followers' element={<Follower username={username} />} />
             <Route path='/allusers' element={<Otherusers username={username} />} />
             <Route path='/followuser' element={<Followingprofile user={user}/>}/>
+            <Route path='/join' element={<JoinRadio />}/>
           </Route>
 
 

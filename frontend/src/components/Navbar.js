@@ -29,16 +29,13 @@ const Navbar = () => {
                                 <Link to="/artist" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Artists</Link>
                                 <Link to="/playlist" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Playlist</Link>
                                 <Link to="/upload" className="rounded-md px-3 py-3 text-sm font-medium text-orange-300 hover:bg-orange-300 hover:text-black">Upload Song</Link>
-                                <SearchBar/>
+                
                                 </div>
                             </div>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <div className="relative">
-                                 <input 
-                                    type="text" 
-                                    className="searchbar block w-full px-3 py-2 border border-gray-300 rounded-md text-sm text-black placeholder-gray-500 focus:outline-none focus:ring-orange-300 focus:border-orange-300 sm:text-sm"
-                                    placeholder="Search..."/> 
+                            <div className="relative bg-black">
+                                <SearchBar/>
                             </div>
                             <div className="relative">
                                 <Link to="/profile">

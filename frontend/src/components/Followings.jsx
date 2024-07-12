@@ -2,10 +2,12 @@ import React, { useEffect, useState ,useContext} from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { SearchContext } from '../context/SearchContext';
 const Followings = ({ username, setuser }) => {
   const [user, setusers] = useState([]);
   const [data, setdata] = useState([])
 const navigate =useNavigate()
+const {search,setSearch} = useContext(SearchContext)
   const handleondelete = (id) => {
     const url = 'http://localhost:8000/playlist/deletefollower';
     async function deleteFollower() {

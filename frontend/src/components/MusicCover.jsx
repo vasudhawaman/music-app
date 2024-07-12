@@ -11,11 +11,11 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
   const {name}= useParams();
        const [like,setLike]= useState(false)
        const {
-        audioRef,
-        current,setCurrent,
-        songs,setSongs,nextSong,
-        playStatus,setPlayStatus,
-        play,pause,
+       setCurrent,
+        
+        setPlayStatus,
+        setTotal
+       
       } = useContext(PlayerContext)
       const newaudio = document.createElement("audio")
       const time = newaudio.duration;
@@ -44,6 +44,7 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
        console.log("set song called")
        setCurrent({now:obj,index:index})
         setPlayStatus(false)
+        setTotal(0)
            
       }
     async  function likeSong(){

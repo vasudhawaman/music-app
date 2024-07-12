@@ -6,10 +6,8 @@ const PlayerContextProvider = (props) => {
     const [current,setCurrent] = useState({});
     const [playStatus,setPlayStatus]= useState(false);
     const [songs,setSongs] = useState([])
-    const play = () => {
-        audioRef.current.play();
-        setPlayStatus(true);
-    }
+    const [total,setTotal] = useState(0)
+    
 
     const pause = () => {
         audioRef.current.pause();
@@ -28,7 +26,15 @@ const PlayerContextProvider = (props) => {
         }
     }
    
-   
+    const play = () => {
+        audioRef.current.play();
+        audioRef.current.onended =()=>{
+            nextSong(current.index +1)
+            setPlayStatus(false)
+            setTotal(0)
+        }
+        setPlayStatus(true);
+    }
 
     
 
@@ -38,6 +44,7 @@ const PlayerContextProvider = (props) => {
       songs,setSongs,nextSong,
       playStatus,setPlayStatus,
       play,pause,
+      total,setTotal
      
     }
 

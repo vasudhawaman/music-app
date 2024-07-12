@@ -29,6 +29,7 @@ app.use('/auth',require('./routes/user'))
 app.use('/playlist', require('./routes/playlist'));
 app.use('/search',require('./routes/search'));
 app.use('/like',require('./routes/like'));
+app.use('/view',require('./routes/view'));
 
 app.get('/createToken/:token' ,(req,res)=>{
      console.log(req.params.token)

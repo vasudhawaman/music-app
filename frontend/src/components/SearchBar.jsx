@@ -20,11 +20,11 @@ export default function SearchBar(){
         
 <form className="max-w-md mx-auto" onSubmit={handleSubmit}>   
    
-    <div className="flex  bg-white">
+   
        
-        <input type="search" id="default-search" className="block w-full p-1 ps-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search.." required onChange={handleChange} />
-        <button className=""><SearchIcon/></button>
-    </div>
+    <input type="text" className="searchbar block w-full px-3 py-2 border border-gray-300 rounded-md text-sm text-black placeholder-gray-500 focus:outline-none focus:ring-orange-300 focus:border-orange-300 sm:text-sm"
+                                    placeholder="Search..." onChange={handleChange}/> 
+                                
 </form>
 
     )

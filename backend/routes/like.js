@@ -38,7 +38,7 @@ router.post('/check',verifyToken,async(req,res)=>{
 });
 router.delete('/:name',verifyToken,async(req,res)=>{
      try{
-        const playlists = await Playlist.findOneAndDelete({user_id:req.id,song:req.params.name});
+        const playlists = await Like.findOneAndDelete({user_id:req.id,song:req.params.name});
      } catch(err){
         return res.status(400).json({message:"Not unliked!"})
      }
