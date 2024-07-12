@@ -8,6 +8,8 @@ const PlayerContextProvider = (props) => {
     const [songs,setSongs] = useState([])
     const [total,setTotal] = useState(0)
     
+    const [playbackSpeed, setPlaybackSpeed] = useState(1);
+   
 
     const pause = () => {
         audioRef.current.pause();
@@ -25,6 +27,14 @@ const PlayerContextProvider = (props) => {
          setCurrent({})
         }
     }
+    const handleSongSpeed = (e) =>{
+        const speed = parseFloat(e.target.value);
+        setPlaybackSpeed(speed);
+        if (audioRef.current) {
+            audioRef.current.playbackSpeed = speed;
+          }
+        };
+    
    
     const play = () => {
         audioRef.current.play();
@@ -43,8 +53,8 @@ const PlayerContextProvider = (props) => {
       current,setCurrent,
       songs,setSongs,nextSong,
       playStatus,setPlayStatus,
-      play,pause,
-      total,setTotal
+      play,pause,handleSongSpeed,
+      playbackSpeed,setPlaybackSpeed
      
     }
 

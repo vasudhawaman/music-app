@@ -1,4 +1,4 @@
-import React ,{useState,useEffect,useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
@@ -7,9 +7,9 @@ import Replay10Icon from '@mui/icons-material/Replay10';
 import PauseIcon from '@mui/icons-material/Pause';
 import { PlayContext } from "../context/PlayContext";
 import { PlayerContext } from "../context/PlayerContext";
-import Lyrics from './Lyrics'
+
 export default function Control(){
-  const {start,setStart} = useContext(PlayContext)
+  const {start,setStart} = useContext(PlayContext);
   const {
     audioRef,
     current,
@@ -62,38 +62,7 @@ export default function Control(){
       
     } },[playStatus,start]);
 
-    const [value,setValue] = useState(0);
-      const [maxValue,setMax] =useState(0);
-      const [isPlaying,setPlaying] = useState(false)
-
-      
-    function handleValue(e){
-         
-          const song = document.getElementById("audio");
-         
-          audioRef.current.currentTime = e.target.value;
-          setValue(e.target.value)
-          setPlayStatus(true)
-          
-    }
-    function handlePlay(){
-     
-      setPlayStatus(true)
-      play()
-      setMax(audioRef.current.duration);
-     setInterval(()=>{
-       setTotal((prev)=>{
-        if(prev === 30){
-          addViews()
-          console.log("added")
-        }
-         return prev+1;
-         
-        })
-       
-      },1000)
-      
-    }
+  
   
     function handlePause(){
       //  setPlaying(false);
