@@ -66,7 +66,7 @@ export default function Allplaylist(){
        
         {
            playlists.length>0 &&  playlists.map((page)=>{
-               return  <PlaylistCard name={page.name} cover={page.cover}/>;
+               return  <PlaylistCard name={page.name} cover={page.cover} id={page._id} key={page._id}/>;
              })
         }
         </div>

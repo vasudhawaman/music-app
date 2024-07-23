@@ -7,9 +7,11 @@ import Replay10Icon from '@mui/icons-material/Replay10';
 import PauseIcon from '@mui/icons-material/Pause';
 import { PlayContext } from "../context/PlayContext";
 import { PlayerContext } from "../context/PlayerContext";
-
+import Lyrics from "./Lyrics";
 export default function Control(){
   const {start,setStart} = useContext(PlayContext);
+  const [maxValue,setMax] = useState(0);
+  const [value,setValue] =useState(0);
   const {
     audioRef,
     current,
@@ -19,7 +21,6 @@ export default function Control(){
     total,setTotal
   } = useContext(PlayerContext)
   
-    
     async function addViews(){
     const url = `http://localhost:8000/view/increase`;
       const result = await fetch(url,{method:"POST",credentials:"include",
@@ -30,8 +31,6 @@ export default function Control(){
       });
      
     }
-   
-  
 
  useEffect(()=>{
         
@@ -62,7 +61,20 @@ export default function Control(){
       
     } },[playStatus,start]);
 
-  
+    function handleValue(e){
+           setValue(e.target.value);
+           audioRef.current.currentTime = e.target.value;
+    }
+    function handlePlay(){
+      //  setPlaying(false);
+      setMax(audioRef.current.duration);
+      setPlayStatus(true)
+      play()
+      audioRef.current.ontimeupdate = () => {
+        setValue(audioRef.current.currentTime); 
+    }
+      
+    }
   
     function handlePause(){
       //  setPlaying(false);
@@ -113,8 +125,8 @@ export default function Control(){
         </div>
        
          </div>
-        <Lyrics/>
-         
+         {/* <Lyrics/> */}
+          
         </div>
       )
 }

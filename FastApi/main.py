@@ -7,12 +7,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pyngrok import ngrok
 import uvicorn
-import nest_asyncio
-from audioLyrics import diarizeAudio
 
-client = MongoClient('mongodb://localhost:27017')
+
+client = MongoClient('mongodb+srv://vasudhawaman734:NTmWW8UMpb5980be@cluster0.ctfmgcz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
 databasenames =client.list_database_names()
 
@@ -22,7 +20,7 @@ collection =db['music']
 result =collection.find()
 
 songs =pd.DataFrame(result)
-#print(df)
+print(songs)
 songs['text'] = songs['text'].str.replace(r'\n', '')
 tfidf = TfidfVectorizer(analyzer='word', stop_words='english')
 
@@ -73,7 +71,7 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
-@app.post('/recommend')
+@app.post('/recommendContent')
 async def recommend(song: str):
     recommendation = {
         "song": song,
@@ -81,14 +79,12 @@ async def recommend(song: str):
         }
     response=recommedations.recommend(recommendation)
     return JSONResponse(content=response,status_code=200)
-@app.post('/lyrics')
-async def recommend(song: str):
-    
-    response= diarizeAudio(song)
-    return JSONResponse(content=response,status_code=200)
+#query request hein lol
 
 
-ngrok_tunnel = ngrok.connect(5000)
-print('Public URL:', ngrok_tunnel.public_url)
-nest_asyncio.apply()
+# ngrok_tunnel = ngrok.connect(5000)
+# print('Public URL:', ngrok_tunnel.public_url)
+#nest_asyncio.apply()
 uvicorn.run(app, port=5000)
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8000)

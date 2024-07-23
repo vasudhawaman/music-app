@@ -6,6 +6,7 @@ import { songsData } from '../assets/assets'
 import Songitem from "../components/Songitem";
 import { SearchContext } from "../context/SearchContext";
 import { PlayerContext } from "../context/PlayerContext";
+import axios from "axios";
 export default function Allsongs({ add,setAdd }) {
     const {
         songs,setSongs

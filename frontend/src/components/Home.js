@@ -8,6 +8,7 @@ import Recommdation from './Recommdation'
 import Footer from './Footer'
 import Sidebar from './Sidebar'
 import SongPlayer from './SongPlayer'
+
 const Home = () => {
     
     const[width,setwidth]=useState('100%')

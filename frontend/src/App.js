@@ -28,6 +28,8 @@ import Follower from './components/Follower';
 import Followings from './components/Followings'
 import Followingprofile from './components/Followingprofile';
 import Tandc from './pages/T&C';
+import Share from './components/Share'
+import JoinRadio from './components/JoinRadio'
 function App() {
  
   const [add,setAdd] = useState(null)
@@ -79,7 +81,8 @@ function App() {
             <Route path='/followers' element={<Follower username={username} />} />
             <Route path='/allusers' element={<Otherusers username={username} />} />
             <Route path='/followuser' element={<Followingprofile user={user}/>}/>
-            <Route path='/join' element={<JoinRadio />}/>
+            <Route path='/share' element={<Share/>}/>
+             <Route path='/join' element={<JoinRadio />}/> 
           </Route>
 
 

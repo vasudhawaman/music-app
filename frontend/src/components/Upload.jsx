@@ -1,5 +1,6 @@
 import React,{useState} from "react"
 import {uploadSong,uploadCover} from "./cloudinary.js"
+import { AssemblyAI } from 'assemblyai'
 export default function Upload(){
   const [form,setForm] = useState({song:""})
  async function handleChange(e){
@@ -7,30 +8,37 @@ export default function Upload(){
        if(e.target.name ==="song")  return {...prev,[e.target.name]:e.target.value}
        else  return {...prev,[e.target.name]:e.target.files[0]}
       })
-      console.log(form)
-     
   }
  async function handlesubmit(e){
      e.preventDefault()
-    
-    
+
      try{
       const fileUrl = await uploadCover(form.cover)
         const songUrl = await uploadSong(form.audio)
         const songName = form.song.replace(/\+s/g,"-")
-      console.log(fileUrl)
-      const url = 'http://localhost:8000/upload';
+        const client = new AssemblyAI({
+          apiKey: "8eaea9586edd4058829c50e7d2eb5e85"
+        })
+        const config = {
+          audio_url: songUrl
+        }
+        
+        const run = async () => {
+          const transcript = await client.transcripts.transcribe(config)
+          const url = 'http://localhost:8000/upload';
       const response = await fetch(url, {
           method: "POST",
           credentials: "include",
           headers: {
               "Content-Type": "application/json",
           },
-          body: JSON.stringify({ song:form.song,audio:songUrl,cover:fileUrl})
-      });
-
-      const json = await response.json();
-      alert(json.message)
+          body: JSON.stringify({ song:form.song,audio:songUrl,cover:fileUrl,text:transcript.text}) });
+          const json = await response.json();
+          alert(json.message)
+    }
+        run();
+        
+      
      }catch(err){
           console.log(err)
      }

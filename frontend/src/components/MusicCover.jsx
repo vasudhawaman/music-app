@@ -49,7 +49,6 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
       }
     async  function likeSong(){
       setLike(true)
-      console.log(obj);
         const url = `http://localhost:8000/like/add`;
         const result = await fetch(url,{method:"POST",credentials:"include",
           headers: {
@@ -58,8 +57,23 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
           body: JSON.stringify({song:song})
         });
         const json = await result.json();
-        alert(json.message)
-      }
+        console.log("called like",song)
+
+        const response= await fetch(`https://recommendation-api-qks9.onrender.com/recommendContent?song=${song}`,{
+          method:"POST"
+        });
+        const recommend = await response.json();
+        recommend.forEach(async(element)=>{
+          const u = `http://localhost:8000/recommend/create`;
+          const result = await fetch(u,{method:"POST",credentials:"include",
+            headers: {
+              "Content-Type": "application/json",
+          },
+            body: JSON.stringify({song:element[1],artist:element[2]})
+          });
+          
+     })
+}
       async  function removeLike(){
         setLike(false)
         const url = `http://localhost:8000/like/${song}`;

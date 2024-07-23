@@ -1,36 +1,39 @@
-import React from "react"
+import React , {useState,useContext} from "react"
+import { AssemblyAI } from 'assemblyai'
 
-
+import { PlayerContext } from "../context/PlayerContext";
 export default function Lyrics(){
-    let subtitles = document.getElementById("subtitles");
-            var syncData = [
-                  { "end": "0.225","start": "0.125","text": "There" },
-                  {"end": "0.485","start": "0.225","text": "were" },
-                  /* ... and so on ... full json is in the demo */
-                ];
-            createSubtitle();
+            const [lyric,setLyrics] = useState("");
+            const [syncData,setData] = useState([])
+            const {
+                audioRef,
+                playStatus
+               
+              } = useContext(PlayerContext)
+              
+          
+          // npm install assemblyai
 
-            function createSubtitle()
-            {
-                var element;
-                for (var i = 0; i < syncData.length; i++) {
-                    element = document.createElement('span');
-                    element.setAttribute("id", "c_" + i);
-                    element.innerText = syncData[i].text + " ";
-                    subtitles.appendChild(element);
-                }
-            }
-            const audioPlayer= document.getElementById("audio");
-            audioPlayer.addEventListener("timeupdate", function(e){
-                syncData.forEach(function(element, index, array){
-                    if( audioPlayer.currentTime >= element.start && audioPlayer.currentTime <= element.end )
-                        subtitles.children[index].style.fontColor = 'yellow';
-                    
-                });
-            });
 
+const client = new AssemblyAI({
+  apiKey: "8eaea9586edd4058829c50e7d2eb5e85"
+})
+
+const audioUrl =
+`https://res.cloudinary.com/dw1rh4myb/video/upload/v1718004735/Levitating---Dua-Lipa_trendymusic.in_uhro49.mp3`;
+const config = {
+  audio_url: audioUrl
+}
+
+const run = async () => {
+  const transcript = await client.transcripts.transcribe(config)
+  setData(transcript.words)
+}
+
+run()
+           
             return(
-                <div id="subtitles"></div>
+                <div id="subtitles">{lyric}</div>
             )
      
 }

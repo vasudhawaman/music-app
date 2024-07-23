@@ -51,6 +51,7 @@ const PlayerContextProvider = (props) => {
    const contextValue = {
       audioRef,
       current,setCurrent,
+      total,setTotal,
       songs,setSongs,nextSong,
       playStatus,setPlayStatus,
       play,pause,handleSongSpeed,

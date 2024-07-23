@@ -43,6 +43,9 @@ app.use('/auth', require('./routes/user'))
 app.use('/playlist', require('./routes/playlist'));
 app.use('/search',require('./routes/search'));
 app.use('/like',require('./routes/like'));
+app.use('/view',require('./routes/view'));
+app.use('/radio',require('./routes/radio'));
+app.use('/recommend',require('./routes/recommend'));
 
 app.get('/createToken/:token' ,(req,res)=>{
      console.log(req.params.token)
@@ -52,7 +55,7 @@ app.get('/createToken/:token' ,(req,res)=>{
     
 })
 app.post('/upload', verifyToken, async (req, res) => {
-     const { song, cover, audio } = req.body;
+     const { song, cover, audio,text } = req.body;
      const id = req.id;
      try {
           const result = await User.find({ _id: id });
@@ -61,7 +64,8 @@ app.post('/upload', verifyToken, async (req, res) => {
                artist: username,
                song: song,
                cover: cover,
-               audio: audio
+               audio: audio,
+               text:text
           })
           newSong.save()
           res.status(200).json({ message: "Uploaded Song!!" })
@@ -80,7 +84,11 @@ app.get('/auth/google/callback',
      passport.authenticate('google', { failureRedirect: 'http://localhost:3000' }),
      (req, res) => {
           const {authToken}=req.user;
-          res.redirect(`/createToken/${authToken}`);
+          console.log(req.user);
+          res.cookie('token_musify',String(authToken),{
+               maxAge:24*60*60*7*1000*3,
+           })
+           res.redirect(`http://localhost:3000/home`);
      });
 app.listen(8000, () => {
      console.log("Listening on port 8000");

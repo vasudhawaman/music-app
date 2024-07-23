@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MoreVert from "@mui/icons-material/MoreVert";
 import { uploadCover } from "./cloudinary";
-export default function PlaylistCard({name,cover}){
+import Share from "./Share";
+export default function PlaylistCard({name,cover,id}){
     const [file,setFile] = useState(null);
     const Navigate = useNavigate();
+    const shareUrl = 'https://' + window.location.host + '/share' + `?id=`+`${id}` +`&type=playlist`;
+    console.log(shareUrl);
     function goToplaylist(){
                Navigate(`/player/${name}`)
     }
@@ -63,7 +66,11 @@ export default function PlaylistCard({name,cover}){
                     }}/>
                     </div>
                     <dialog id="extra" className="">
-                    <div className="text-black- hover:text-white bg-white hover:bg-orange-500 p-1">Share</div>
+                    <div className="text-black- hover:text-white bg-white hover:bg-orange-500 p-1" onClick={()=>{
+                        const share = document.getElementById("share");
+                        share.classList.remove("hidden");
+                    }}>Share</div>
+                    <Share shareUrl={shareUrl}/>
                     <div className="text-black- hover:text-white bg-white hover:bg-orange-500 p-1" onClick={handleDelete}>Delete</div>
                     <div className="text-black- hover:text-white bg-white hover:bg-orange-500 p-1" onClick={()=>{
                           document.getElementById("cover")?.show()
@@ -73,6 +80,7 @@ export default function PlaylistCard({name,cover}){
                          const dialog = document.getElementById("extra");
                          dialog.close()
                     }}>Close</div>
+                    
                 </dialog>
                 <dialog id="cover" className="ml-10">
                 <form class="max-w-sm mx-auto"  onSubmit={handlesubmit}>

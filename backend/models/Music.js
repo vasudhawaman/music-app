@@ -16,6 +16,10 @@ const MusicSchema = new mongoose.Schema({
     audio:{
         type:String,
         required:false
+    },
+    text:{
+        type:String,
+        required:false
     }
 });
 
