@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import MoreVert from "@mui/icons-material/MoreVert";
 import { uploadCover } from "./cloudinary";
 import Share from "./Share";
 export default function PlaylistCard({name,cover,id}){
@@ -12,7 +11,7 @@ export default function PlaylistCard({name,cover,id}){
     function goToplaylist(){
                Navigate(`/player/${name}`)
     }
-    async function handleDelete(){
+async function handleDelete(){
         const url = `http://localhost:8000/playlist/delete/${name}`;
         const response = await fetch(url, {
             method: "DELETE",
@@ -65,7 +64,7 @@ export default function PlaylistCard({name,cover,id}){
                       dialog.show()
                     }}/>
                     </div>
-                    <dialog id="extra" className="">
+                <dialog id="extra" className="">
                     <div className="text-black- hover:text-white bg-white hover:bg-orange-500 p-1" onClick={()=>{
                         const share = document.getElementById("share");
                         share.classList.remove("hidden");

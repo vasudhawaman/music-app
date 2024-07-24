@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const Playlist = require('../models/Playlist');
+const Music = require('../models/Music');
 const verifyToken = require('../middleware/verifyToken');
-const User = require('../models/User');
-const Follow = require('../models/Follow');
-const Like= require('../models/Like');
 const View= require('../models/View');
 const router = express.Router();
 
@@ -22,6 +19,7 @@ router.post('/increase',verifyToken,async(req,res)=>{
             await newView.save()
        }else{
            const update = await View.findOneAndUpdate({user_id:req.id,song:song},{$inc:{count:1}});
+           const songUpdated = await Music.findOneAndUpdate({song:song},{$inc:{count:1}});
        }
        res.status(200).json({message:"success"})
 })

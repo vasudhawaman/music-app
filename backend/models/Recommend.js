@@ -12,6 +12,14 @@ const RecommendSchema = new Schema({
         type:String,
        
     },
+    cover:{
+        type:String,
+       
+    },
+    audio:{
+        type:String,
+       
+    },
 })
 
 module.exports=mongoose.models.Recommend || mongoose.model('Recommend',RecommendSchema)

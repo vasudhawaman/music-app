@@ -20,6 +20,10 @@ const MusicSchema = new mongoose.Schema({
     text:{
         type:String,
         required:false
+    },
+    count:{
+        type:Number,
+        required:false
     }
 });
 

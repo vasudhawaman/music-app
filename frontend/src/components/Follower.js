@@ -1,6 +1,8 @@
 import React, { useEffect, useState,useContext } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { SearchContext } from "../context/SearchContext";
+import SideComponent from './SideComponent';
+import Header from './Header';
 const Follower = ({ username }) => {
     console.log(username)
     const [user, setusers] = useState([]);
@@ -75,7 +77,11 @@ const Follower = ({ username }) => {
     }, [user])
     return (
         <>
-        <h1 className='text-orange-300 mt-12 font-mono text-4xl' >Followers</h1>
+<div className=" w-screen h-screen grid grid-cols-7">
+      <SideComponent />
+<div className="w-full col-start-0 sm:col-start-2 col-span-7 sm:col-span-5">
+      <Header />
+      <h1 className='text-orange-300 mt-12 font-mono text-4xl' >Followers</h1>
         <div className='flex flex-row'>
             {Array.isArray(data) && data.map((u) => {
                 return (
@@ -92,6 +98,10 @@ const Follower = ({ username }) => {
             })}
 
         </div>
+   
+     </div>
+  </div>
+        
         </>
     )
 }

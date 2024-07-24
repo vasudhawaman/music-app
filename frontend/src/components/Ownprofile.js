@@ -1,5 +1,7 @@
 import React, { useState ,useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import SideComponent from './SideComponent';
+import Header from './Header';
 const Ownprofile = ({ username }) => {
    const[follower,setfollower]=useState();
    const[following,setfollowings]=useState(); 
@@ -39,7 +41,12 @@ const Ownprofile = ({ username }) => {
                 alluser();
             },[])
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className=" w-screen h-screen grid grid-cols-7">
+   <SideComponent />
+
+<div className="w-full col-start-0 sm:col-start-2 col-span-7 sm:col-span-5">
+      <Header />
+      <div className="flex justify-center items-center h-screen">
             <div className="container font-bold text-orange-300 flex flex-col justify-center items-center w-4/5 md:w-1/2 h-96 font-mono border border-4 border-orange-300 rounded-lg">
                 <div className='text-xl text-center mt-0 '>Your Profile</div>
                 <img className=" h-16 w-16 mt-3 rounded-full cursor-pointer" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
@@ -69,6 +76,10 @@ const Ownprofile = ({ username }) => {
             </div>
         </div>
 
+   
+</div>
+  </div>
+        
     )
 }
 

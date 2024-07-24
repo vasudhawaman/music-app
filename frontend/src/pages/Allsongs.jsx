@@ -1,9 +1,9 @@
 import React, { useState, useEffect ,useContext} from "react"
 import AudioHover from "../components/AudioHover";
 import MusicCover from "../components/MusicCover";
-import Search from "../components/Search"
-import { songsData } from '../assets/assets'
-import Songitem from "../components/Songitem";
+import Search from "../components/Search";
+import SideComponent from "../components/SideComponent"
+import Header from "../components/Header"
 import { SearchContext } from "../context/SearchContext";
 import { PlayerContext } from "../context/PlayerContext";
 import axios from "axios";
@@ -45,7 +45,11 @@ export default function Allsongs({ add,setAdd }) {
     
   return(
       <>
-    
+       <div className=" w-screen h-screen grid grid-cols-7">
+   <SideComponent />
+
+<div className="w-full col-start-0 sm:col-start-2 col-span-7 sm:col-span-5">
+      <Header />
       <div className='your-playlist h-96 mt-14'>
       <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Songs</h1>
        <Search songs={add}/>  {/* this is a dialog box for searching playlist to add songs to with id = dialog*/}
@@ -59,6 +63,9 @@ export default function Allsongs({ add,setAdd }) {
      { <AudioHover  /> }
       </div>
      </div>
+</div>
+  </div>
+     
       </>
   )
 }

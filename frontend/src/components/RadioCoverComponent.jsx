@@ -27,15 +27,14 @@ export default function RadioCoverComponent({name,date,username,audio}){
        
     }
     return(
-        <div className="w-full h-12 bg-black border border-orange-300 grid grid-cols-4">
+        <div className="w-full h-12 p-3 bg-black border border-orange-300 grid grid-cols-4">
            <div className="text-orange-300 text-base col-span-1 bold">{name}</div>
            <div className="text-orange-300 text-base col-span-1 bold">{username}</div>
-          { !join? <div className="text-orange-300 text-base col-span-1 bold">{`${Math.floor(left/3600)}hrs`+`${Math.floor((left%3600)/60)}mins`+`${Math.floor((left%60))}secs`}</div> : null}
+          { !join? <div className="text-orange-300 text-base col-span-1 bold p-3">{`${Math.floor(left/3600)}hrs`+`${Math.floor((left%3600)/60)}mins`+`${Math.floor((left%60))}secs`}</div> : null}
              
              {join ?<>
            <audio id="peer" src={audio}  hidden/>
-           <button type="submit" class="text-white bg-orange-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={startRadio} >Join</button>
-           
+           <button type="submit" class="text-white bg-orange-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 pt-0" onClick={startRadio} >Join</button>
         </>
         : null}
         </div>

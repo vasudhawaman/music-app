@@ -6,7 +6,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link, useNavigate
 } from "react-router-dom";
 import Login from './screen/Login/Login';
 import Forgetpass from './screen/Login/Forgetpass';
@@ -20,7 +19,6 @@ import Allsongs from './pages/Allsongs';
 import Playlist from './components/Playlist'
 import Upload from './components/Upload';
 import Navbar from './components/Navbar';
-import ProfilePage from './components/ProfilePage';
 import InsidePlaylist from './components/InsidePlaylist';
 import Otherusers from './components/Otherusers';
 import Ownprofile from './components/Ownprofile';
@@ -28,8 +26,9 @@ import Follower from './components/Follower';
 import Followings from './components/Followings'
 import Followingprofile from './components/Followingprofile';
 import Tandc from './pages/T&C';
-import Share from './components/Share'
 import JoinRadio from './components/JoinRadio'
+import SharedItem from './components/SharedItem';
+import NewHome from './components/NewHome';
 function App() {
  
   const [add,setAdd] = useState(null)
@@ -68,23 +67,23 @@ function App() {
           <Route path='/change' element={<Changepass forgetotp={forgetotp} />} />
           <Route path='/otp1' element={<Otp1 otpState={otpState} />} />
           <Route path='tandc' element={<Tandc />} />
-          <Route path='/home' element={<Home />} />
-          <Route element={<Navbar />} >
+          <Route path='/home' element={<NewHome />} />
+         
             <Route path='/playlist' element={<Allplaylist />} />
             <Route path='/album/:id' element={<InsidePlaylist />} />
             <Route path='/artist' element={<Allartist />} />
             <Route path='/songs' element={<Allsongs  add={add} setAdd={setAdd} />} />
             <Route path='/player/:name' element={<Playlist add={add} setAdd={setAdd} />} />
+            
             <Route path='/upload' element={<Upload />} />
             <Route path='/profile' element={<Ownprofile username={username} />} />
             <Route path='/followings' element={<Followings username={username} setuser={setuser} />} />
             <Route path='/followers' element={<Follower username={username} />} />
             <Route path='/allusers' element={<Otherusers username={username} />} />
             <Route path='/followuser' element={<Followingprofile user={user}/>}/>
-            <Route path='/share' element={<Share/>}/>
+            <Route path='/share' element={<SharedItem/>}/>
              <Route path='/join' element={<JoinRadio />}/> 
-          </Route>
-
+        
 
         </Routes>
 

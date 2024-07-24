@@ -106,9 +106,9 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
                   duration={500}
                 >
                  
-         <div className="w-full h-12 border-indigo-50 bg-black text-orange-300  grid grid-cols-8 z-5 p-2 border-amber-400" >
+         <div className="w-4/5 h-12 border-indigo-50 bg-black text-orange-300  grid grid-cols-7 z-5 p-2 border-amber-400" >
             <div className="col-span-1 rounded-full" onClick={setsong}> <img src={cover} className="object contain h-3/5 w-3/5 md:w-3/5 pl-1 md:pl-5" /></div>
-            <div className="font-bold col-span-3 text-xs md:text-md mr-0 sm:mr-1  ml-1"  onClick={setsong}>{songName}</div>
+            <div className="font-bold col-span-2 text-xs md:text-md mr-0 sm:mr-1  ml-1"  onClick={setsong}>{songName}</div>
             <div className="col-span-1 text-xs md:text-md mr-0 sm:mr-1 ml-1"  onClick={setsong}>{artist}</div>
             <div className="col-span-1 text-xs md:text-md"> <PlaylistAddIcon onClick={()=>{
                 document.getElementById("dialog").show()

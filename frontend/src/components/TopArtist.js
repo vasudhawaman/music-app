@@ -3,7 +3,7 @@ import React from 'react'
 const TopArtist = () => {
   return (
     <div className='your-artist h-36 sm:h-56' id="playlist">
-            <h1 className=' md:mt-16 font-mono font-extrabold text-orange-300 text-center text-3xl my-5 underline'>Your Top Artist</h1>
+            <h1 className='font-mono font-extrabold text-orange-300 text-center text-3xl my-5 underline'>Your Top Artist</h1>
             <div className="all-card flex" >
             
                 <div className='artist-card w-56 mx-4 h-64'>

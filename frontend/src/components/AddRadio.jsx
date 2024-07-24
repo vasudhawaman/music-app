@@ -49,8 +49,8 @@ export default function AddRadio(){
              
    }
     return(
-        <div className="grid grid-cols-3">
-        <div className="col-span-1 mt-16 border w-96 p-3 border-orange-300 ">
+     <div className="grid grid-cols-3">
+        <div className="col-span-1 mt-8 ml-3 border w-96 p-3 border-orange-300 ">
             <h1 className="text-orange-300 mb-3 text-xl">Add a radio station !</h1> 
         <form class="mb-10" onSubmit={submitRadio}>
         <label for="email" class="block mb-2 text-sm font-medium text-orange-300 dark:text-white">Station Name:</label>
@@ -73,10 +73,9 @@ export default function AddRadio(){
         </div>
         <button type="submit" class="text-white bg-orange-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Create</button>
         </form>
-        
-        
+
         </div>
-        {/* <div id="radio" className="mt-16 ml-0 col-span-2"></div> */}
+    
         </div>   
     )
 }
