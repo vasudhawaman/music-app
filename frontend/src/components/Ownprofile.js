@@ -53,6 +53,15 @@ const Ownprofile = ({ username }) => {
                 <h1 className=' mt-5 text-4xl'>{username}</h1>
                 <div className='flex gap-2 mt-4'>
                    
+                    <Link to='/allusers'>
+                    <div className="follower bold bg-orange-300 text-black rounded-md w-16 md:w-24 h-5 text-center text-xs md:text-md">
+                        Edit Profile
+                    </div>
+                    </Link>
+                    
+                </div>
+                <div className='flex gap-2 mt-4'>
+                                       
                     <Link to='/followers'>
                     <div className="follower bold bg-orange-300 text-black rounded-md w-16 md:w-24 h-5 text-center text-xs md:text-md">
                         {following}Followers
@@ -73,6 +82,7 @@ const Ownprofile = ({ username }) => {
                     </Link>
                     
                 </div>
+               
             </div>
         </div>
 

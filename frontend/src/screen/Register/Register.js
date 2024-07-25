@@ -87,15 +87,15 @@ const Register = ({ setOtpState }) => {
         console.log(credentials);
     }
     return (
-        <div className='body'>
-            <div className="left-side">
+        <div className='body bg-gradient-to-r from-darkPurple to-mediumPurple'>
+            <div className="left-side bg-gradient-to-r from-darkPurple to-mediumPurple">
                 <div className="lhs">
                     <div className="name1">Musicify</div>
                     <div className="description1">Discover new music, listen offline, and experience high-quality audio, all tailored to your unique taste. Start your musical journey today!</div></div>
                 <div className="rhs">
                     <FaCompactDisc className='disc1' /></div>
             </div>
-            <div className="right-side">
+            <div className="right-side bg-gradient-to-r from-darkPurple to-mediumPurple">
                 <h1 className="welcome" style={{ fontSize: '40px' }}>Welcome</h1>
                 <p className="credentials1">Email</p>
                 <input type="text" className="credentials-fill1" placeholder='Enter your email' name="email" onChange={handleOnChange} />

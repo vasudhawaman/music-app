@@ -29,6 +29,8 @@ import Tandc from './pages/T&C';
 import JoinRadio from './components/JoinRadio'
 import SharedItem from './components/SharedItem';
 import NewHome from './components/NewHome';
+import Queue from './components/Queue';
+import LikedSongs from './components/LikedSongs';
 function App() {
  
   const [add,setAdd] = useState(null);
@@ -83,6 +85,8 @@ function App() {
             <Route path='/followuser' element={<Followingprofile user={user}/>}/>
             <Route path='/share' element={<SharedItem add={add} setAdd={setAdd}/>}/>
              <Route path='/join' element={<JoinRadio />}/> 
+             <Route path='/queue' element={<Queue/>}/>
+             <Route path='/likes' element={<LikedSongs/>}/>
         
 
         </Routes>

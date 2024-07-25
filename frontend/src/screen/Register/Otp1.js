@@ -28,15 +28,15 @@ const Otp1 = ({otpState}) => {
     };
 
   return (
-    <div  className='body1'>
-            <div className="left-side">
-                <div className="lhs">
+    <div  className='body1 bg-gradient-to-r from-darkPurple to-mediumPurple'>
+            <div className="left-side bg-gradient-to-r from-darkPurple to-mediumPurple">
+                <div className="lhs bg-gradient-to-r from-darkPurple to-mediumPurple">
                 <div className="name">Musicify</div>
                 <div className="description1">Discover new music, listen offline, and experience high-quality audio, all tailored to your unique taste. Start your musical journey today!</div></div>
                 <div className="rhs">
                 <FaCompactDisc className='disc' /></div>
             </div>
-            <div className="right-side">
+            <div className="right-side bg-gradient-to-r from-darkPurple to-mediumPurple">
             <h1 className="welcome1" style={{marginTop:'200px'}}>Enter your OTP</h1>
             <p className="credentials">Enter OTP</p>
             <input type="text" className="credentials-fill1"  placeholder='Enter the OTP' onChange={handleChange}/>
