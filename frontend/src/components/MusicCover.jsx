@@ -12,7 +12,6 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
        const [like,setLike]= useState(false)
        const {
        setCurrent,
-        
         setPlayStatus,
         setTotal
        
@@ -57,12 +56,11 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
           body: JSON.stringify({song:song})
         });
         const json = await result.json();
-        console.log("called like",song)
-
         const response= await fetch(`https://recommendation-api-qks9.onrender.com/recommendContent?song=${song}`,{
           method:"POST"
         });
         const recommend = await response.json();
+        console.log(recommend)
         recommend.forEach(async(element)=>{
           const u = `http://localhost:8000/recommend/create`;
           const result = await fetch(u,{method:"POST",credentials:"include",
@@ -97,14 +95,7 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
       }
        return(
         <>
-        <Link
-                 
-                  to="controls"
-                  spy={true}
-                  smooth={true}
-                 
-                  duration={500}
-                >
+        <Link to="controls" spy={true} smooth={true} duration={500}>
                  
          <div className="w-4/5 h-12 border-indigo-50 bg-black text-orange-300  grid grid-cols-7 z-5 p-2 border-amber-400" >
             <div className="col-span-1 rounded-full" onClick={setsong}> <img src={cover} className="object contain h-3/5 w-3/5 md:w-3/5 pl-1 md:pl-5" /></div>

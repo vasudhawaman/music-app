@@ -5,7 +5,8 @@ import Header from "../components/Header";
 import SideComponent from "../components/SideComponent";
   import { SearchContext } from "../context/SearchContext";
   import { PlayerContext } from "../context/PlayerContext";
-export default function Allplaylist(){
+import Playlistfeatures from "../components/Playlistfeatures";
+export default function Allplaylist({add,setAdd}){
       const [playlists,setPlaylists] =useState([]);
       const {search} = useContext(SearchContext);
       const {
@@ -15,7 +16,6 @@ export default function Allplaylist(){
         playStatus,setPlayStatus,
         play,pause,
         
-       
       } = useContext(PlayerContext)
     useEffect(()=>{
 
@@ -61,9 +61,10 @@ export default function Allplaylist(){
        
         {
            playlists.length>0 &&  playlists.map((page)=>{
-               return  <PlaylistCard name={page.name} cover={page.cover} id={page._id} key={page._id}/>;
+               return  <PlaylistCard name={page.name} cover={page.cover} id={page._id}  add={add} setAdd={setAdd} key={page._id}/>;
              })
         }
+        <Playlistfeatures add={add}/>
         </div>
        
         </div>

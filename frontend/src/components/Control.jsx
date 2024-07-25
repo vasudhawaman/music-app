@@ -21,7 +21,7 @@ export default function Control(){
     total,setTotal
   } = useContext(PlayerContext)
   
-    async function addViews(){
+async function addViews(){
     const url = `http://localhost:8000/view/increase`;
       const result = await fetch(url,{method:"POST",credentials:"include",
         headers: {
@@ -29,6 +29,22 @@ export default function Control(){
       },
         body: JSON.stringify({song:current.now.song})
       });
+      
+      const response= await fetch(`https://recommendation-api-qks9.onrender.com/recommendContent?song=${current.now.song}`,{
+        method:"POST"
+      });
+      const recommend = await response.json();
+      console.log(recommend)
+      recommend.forEach(async(element)=>{
+        const u = `http://localhost:8000/recommend/create`;
+        const result = await fetch(u,{method:"POST",credentials:"include",
+          headers: {
+            "Content-Type": "application/json",
+        },
+          body: JSON.stringify({song:element[1],artist:element[2]})
+        });
+        
+   })
      
     }
 

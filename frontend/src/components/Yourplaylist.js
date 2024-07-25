@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 const Yourplaylist = () => {
     const Navigate= useNavigate();
        return (
-        <div className='your-playlist h-96 z-30'>
+        <div className='mt-0 your-playlist h-96 z-30 mb-0'>
             <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 underline'>Top Songs</h1>
             <div className="all-card flex" >
                 
