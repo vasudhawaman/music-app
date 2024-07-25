@@ -15,7 +15,7 @@ const Recommdation = ({width}) => {
     },[])
     const calculatedMarginLeft = width === '85%' ? '67%' : '70%';
     return (
-        <div className='your-playlist h-96' id="recommendation">
+        <div className=' mt-0 mb-0 your-playlist h-96' id="recommendation">
             <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5'>Songs Recommended For you</h1>
             <div className="all-card flex" >
                 {

@@ -33,7 +33,7 @@ import Queue from './components/Queue';
 import LikedSongs from './components/LikedSongs';
 function App() {
  
-  const [add,setAdd] = useState(null)
+  const [add,setAdd] = useState(null);
   const [otpState, setOtpState] = useState()
   const [forgetotp, setforgetotp] = useState();
   const [username, setusername] = useState('');
@@ -71,11 +71,11 @@ function App() {
           <Route path='tandc' element={<Tandc />} />
           <Route path='/home' element={<NewHome />} />
          
-            <Route path='/playlist' element={<Allplaylist />} />
+            <Route path='/playlist' element={<Allplaylist add={add} setAdd={setAdd}/>} />
             <Route path='/album/:id' element={<InsidePlaylist />} />
             <Route path='/artist' element={<Allartist />} />
             <Route path='/songs' element={<Allsongs  add={add} setAdd={setAdd} />} />
-            <Route path='/player/:name' element={<Playlist add={add} setAdd={setAdd} />} />
+            <Route path='/player/:name' element={<Playlist add={add} setAdd={setAdd} info='new'/>} />
             
             <Route path='/upload' element={<Upload />} />
             <Route path='/profile' element={<Ownprofile username={username} />} />

@@ -12,6 +12,7 @@ router.get('/all',verifyToken,async(req,res)=>{
 });
 router.get('/:name',verifyToken,async(req,res)=>{
       const playlists = await Playlist.find({userId:req.id,name:req.params.name});
+      console.log(playlists)
       res.status(200).json(playlists);
 })
 router.post('/create',verifyToken,async(req,res)=>{
@@ -28,7 +29,8 @@ router.post('/create',verifyToken,async(req,res)=>{
             const Newplaylist = new Playlist({
                  
                   name:name,
-                  userId:id
+                  userId:id,
+                  cover:"https://th.bing.com/th/id/OIP.ijJu1PyvDY0MM2vCdpDCrwHaHa?rs=1&pid=ImgDetMain"
              });
              try{
                 const info =  await Newplaylist.save()
