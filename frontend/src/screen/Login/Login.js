@@ -32,15 +32,15 @@ const Login = () => {
         console.log(credentials);
     }
     return (
-        <div className='body1'>
-            <div className="left-side1">
-                <div className="lhs1">
+        <div className='body1 bg-gradient-to-r from-darkPurple to-mediumPurple'>
+            <div className="left-side1 bg-gradient-to-r from-darkPurple to-mediumPurple ">
+                <div className="lhs1 bg-gradient-to-r from-darkPurple to-mediumPurple">
                     <div className="name">Musicify</div>
                     <div className="description">Discover new music, listen offline, and experience high-quality audio, all tailored to your unique taste. Start your musical journey today!</div></div>
                 <div className="rhs1">
                     <FaCompactDisc className='disc' /></div>
             </div>
-            <div className="right-side1">
+            <div className="right-side1 bg-gradient-to-r from-darkPurple to-mediumPurple">
                 <h1 className="welcome1">Welcome</h1>
                 <p className="credentials">Username</p>
                 <input type="text" className="credentials-fill" placeholder='Enter your username' name='username' onChange={handleonchange} />
