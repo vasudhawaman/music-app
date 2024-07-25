@@ -7,7 +7,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useParams } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { PlayerContext } from "../context/PlayerContext";
-export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
+import ShareIcon from '@mui/icons-material/Share';
+import Share from './Share'
+export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd}){
   const {name}= useParams();
        const [like,setLike]= useState(false)
        const {
@@ -18,13 +20,16 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
       } = useContext(PlayerContext)
       const newaudio = document.createElement("audio")
       const time = newaudio.duration;
-      let songName = song.replace(/-/g,' ');
+      let songName = song?.replace(/-/g,' ');
+      let artistName =artist?.replace(/-/g,' ');
       const obj ={
         artist:artist,
         song:song,
         cover:cover,
         audio:audio,
+        shareUrl:`http://localhost:3000/share?id=${id}&type=song`
       }
+       
       useEffect(()=>{
         async function isLiked(){
           const url = `http://localhost:8000/like/check`;
@@ -60,7 +65,7 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
           method:"POST"
         });
         const recommend = await response.json();
-        console.log(recommend)
+  
         recommend.forEach(async(element)=>{
           const u = `http://localhost:8000/recommend/create`;
           const result = await fetch(u,{method:"POST",credentials:"include",
@@ -97,10 +102,10 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
         <>
         <Link to="controls" spy={true} smooth={true} duration={500}>
                  
-         <div className="w-4/5 h-12 border-indigo-50 bg-black text-orange-300  grid grid-cols-7 z-5 p-2 border-amber-400" >
+         <div className="w-4/5 h-12 border-indigo-50 bg-black text-orange-300  grid grid-cols-8 z-5 p-2 border-amber-400" >
             <div className="col-span-1 rounded-full" onClick={setsong}> <img src={cover} className="object contain h-3/5 w-3/5 md:w-3/5 pl-1 md:pl-5" /></div>
             <div className="font-bold col-span-2 text-xs md:text-md mr-0 sm:mr-1  ml-1"  onClick={setsong}>{songName}</div>
-            <div className="col-span-1 text-xs md:text-md mr-0 sm:mr-1 ml-1"  onClick={setsong}>{artist}</div>
+            <div className="col-span-1 text-xs md:text-md mr-0 sm:mr-1 ml-1"  onClick={setsong}>{artistName}</div>
             <div className="col-span-1 text-xs md:text-md"> <PlaylistAddIcon onClick={()=>{
                 document.getElementById("dialog").show()
                 setAdd(obj)
@@ -111,7 +116,8 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
                   setAdd(obj)
                   deleteSong()
               }}/></div> : null
-           }  
+           }
+           
              <div className="font-bold col-span-1 text-xs md:text-md mr-0 sm:mr-1  ml-1"  >
                 { like? <FavoriteIcon onClick={()=>{
                      
@@ -123,6 +129,13 @@ export default function MusicCover({song,artist,cover,audio,index,add,setAdd}){
        }
         }/> }
               </div>
+              <div className="col-span-1 text-xs md:text-md"><ShareIcon onClick={()=>{ 
+                setAdd(obj)
+               const share= document?.getElementById("share");
+               share?.classList.remove("hidden");
+
+              }}/>  </div>
+              
          </div>
       
          </Link>

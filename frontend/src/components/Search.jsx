@@ -1,6 +1,6 @@
 import React,{useState,useRef} from "react";
-import  {useNavigate} from "react-router-dom"
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import  {useNavigate} from "react-router-dom";
+import CloseIcon from '@mui/icons-material/Close';
 export default function Search({songs}){
     const [credentials, setcredentials] = useState({name: "" })
     
@@ -60,12 +60,14 @@ export default function Search({songs}){
        return(
           
       
-         <div className="all-card flex" >
+<div className="all-card flex" >
                
 <dialog id="dialog" className="">
-<form class="max-w-sm mx-auto" method="POST" onSubmit={handlesubmit}>
+<form class="max-w-sm" method="POST" onSubmit={handlesubmit}>
   <div class="mb-5">
-   
+  <CloseIcon className="text-black" onClick={()=>{
+          closeDialog()
+             }}/>
     <input type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search playlists" name="name" onChange={handleonchange} required />
   </div>
   
@@ -86,11 +88,6 @@ export default function Search({songs}){
 </form>
 
 </dialog>
-
-                </div>
-               
-        
-        
-      
-       )
+</div>
+ )
 }

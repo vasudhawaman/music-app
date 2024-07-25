@@ -5,11 +5,18 @@ const Music = require('../models/Music');
 const verifyToken = require('../middleware/verifyToken');
 const User = require('../models/User');
 const Follow = require('../models/Follow');
+const Artist = require('../models/Artist');
 const router = express.Router();
 
 router.get('/all',async (req,res)=>{
     const result = await Music.find();
     res.json(result)
+});
+router.get('/artist',async (req,res)=>{
+    const result = await Artist.find();
+    console.log(result);
+    res.json(result)
+
 });
 router.post('/song',verifyToken,async(req,res)=>{
       const {song}= req.body;

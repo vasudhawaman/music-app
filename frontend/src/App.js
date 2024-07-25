@@ -73,7 +73,7 @@ function App() {
             <Route path='/album/:id' element={<InsidePlaylist />} />
             <Route path='/artist' element={<Allartist />} />
             <Route path='/songs' element={<Allsongs  add={add} setAdd={setAdd} />} />
-            <Route path='/player/:name' element={<Playlist add={add} setAdd={setAdd} info='new'/>} />
+            <Route path='/player/:name' element={<Playlist add={add} setAdd={setAdd} />} />
             
             <Route path='/upload' element={<Upload />} />
             <Route path='/profile' element={<Ownprofile username={username} />} />
@@ -81,7 +81,7 @@ function App() {
             <Route path='/followers' element={<Follower username={username} />} />
             <Route path='/allusers' element={<Otherusers username={username} />} />
             <Route path='/followuser' element={<Followingprofile user={user}/>}/>
-            <Route path='/share' element={<SharedItem/>}/>
+            <Route path='/share' element={<SharedItem add={add} setAdd={setAdd}/>}/>
              <Route path='/join' element={<JoinRadio />}/> 
         
 

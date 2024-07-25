@@ -11,7 +11,7 @@ import {
 export default function Share({shareUrl}){
       
            return(
-            <div id="share" className="text-white text-base h-12 w-56 bg-white flex flex-row hidden">
+            <div id="share" className="text-white hidden text-base h-12 w-56 bg-white flex flex-row ">
             <EmailShareButton url={shareUrl} size={32}>
              <img src='./emailLogo.webp' className="h-8 w-8 m-2" />
              </EmailShareButton>

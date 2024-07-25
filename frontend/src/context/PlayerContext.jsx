@@ -28,13 +28,18 @@ const PlayerContextProvider = (props) => {
         }
     }
     const handleSongSpeed = (e) =>{
-        const speed = parseFloat(e.target.value);
+        const speed = e.target.value;
         setPlaybackSpeed(speed);
         if (audioRef.current) {
-            audioRef.current.playbackSpeed = speed;
+            audioRef.current.playbackRate = speed/100;
           }
         };
-    
+        const handleSongVolume = (e) =>{
+            const speed = e.target.value;
+            if (audioRef.current) {
+                audioRef.current.volume = speed/100;
+              }
+            };
    
     const play = () => {
         audioRef.current.play();
@@ -55,7 +60,8 @@ const PlayerContextProvider = (props) => {
       songs,setSongs,nextSong,
       playStatus,setPlayStatus,
       play,pause,handleSongSpeed,
-      playbackSpeed,setPlaybackSpeed
+      playbackSpeed,setPlaybackSpeed,
+      handleSongVolume
      
     }
 

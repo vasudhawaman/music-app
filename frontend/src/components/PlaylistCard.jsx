@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 export default function PlaylistCard({name,cover,id,add,setAdd}){
     const Navigate = useNavigate();
-    const shareUrl = 'https://' + "localhost:3000"+ '/share' + `?id=`+`${id}` +`&type=playlist`;
+    const shareUrl = 'http://' + "localhost:3000"+ '/share' + `?id=`+`${id}` +`&type=playlist`;
     const obj={
        
         name:name,

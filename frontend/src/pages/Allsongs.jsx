@@ -6,10 +6,10 @@ import SideComponent from "../components/SideComponent"
 import Header from "../components/Header"
 import { SearchContext } from "../context/SearchContext";
 import { PlayerContext } from "../context/PlayerContext";
-import axios from "axios";
+import Share from "../components/Share"
 export default function Allsongs({ add,setAdd }) {
     const {
-        songs,setSongs
+        current,songs,setSongs
       } = useContext(PlayerContext)
     const {search,setSearch} = useContext(SearchContext);
    
@@ -53,14 +53,15 @@ export default function Allsongs({ add,setAdd }) {
       <div className='your-playlist h-96 mt-14'>
       <h1 className='heading font-mono font-extrabold text-orange-300 text-center text-3xl my-5 '>Songs</h1>
        <Search songs={add}/>  {/* this is a dialog box for searching playlist to add songs to with id = dialog*/}
+      {add? <Share shareUrl={add.shareUrl} /> : null}
       {
          songs.length>0 &&  songs.map((s,i)=>{
-            return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i}  add={add} setAdd={setAdd} />
+            return <MusicCover key={s._id} id={s._id} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i}  add={add} setAdd={setAdd} />
            })
       }
      
      <div className="text-left w-screen bg-black z-10">
-     { <AudioHover  /> }
+     {current.now? <AudioHover  /> : null}
       </div>
      </div>
 </div>

@@ -20,6 +20,9 @@ const RecommendSchema = new Schema({
         type:String,
        
     },
+    type:{
+        type:String,
+    }
 })
 
 module.exports=mongoose.models.Recommend || mongoose.model('Recommend',RecommendSchema)

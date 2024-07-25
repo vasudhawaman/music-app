@@ -51,12 +51,9 @@ export default function Playlistfeatures({add}){
             share.classList.remove("hidden");
         }}>Share</div>
         {add? <Share shareUrl={add.shareUrl}/> :null}
+        <div className="text-black- hover:text-white bg-white hover:bg-orange-500 p-1" onClick={()=>{ handleDelete() }}>Delete</div>
         <div className="text-black- hover:text-white bg-white hover:bg-orange-500 p-1" onClick={()=>{
-           
-            handleDelete()
-            }}>Delete</div>
-        <div className="text-black- hover:text-white bg-white hover:bg-orange-500 p-1" onClick={()=>{
-           
+
               document.getElementById("cover").classList.remove("hidden")
               document.getElementById("extra").classList.add("hidden")
              

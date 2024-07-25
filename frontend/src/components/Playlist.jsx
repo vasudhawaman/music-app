@@ -1,6 +1,6 @@
 import React,{useEffect,useState,useReducer, useContext} from "react";
 import { useParams ,useLocation} from "react-router-dom";
-
+import img10 from "../assets/img10.jpg"
 import MusicCover from "./MusicCover";
 import Control from "./Control";
 import AudioHover from "./AudioHover";
@@ -9,6 +9,7 @@ import { PlayContextProvider } from "../context/PlayContext";
 import { PlayerContext } from "../context/PlayerContext";
 import SideComponent from "./SideComponent";
 import Header from "./Header";
+import Search from "./Search";
 export default function Playlist({add,setAdd,info}){
  
        const {
@@ -27,14 +28,18 @@ export default function Playlist({add,setAdd,info}){
                response.json().then((data)=>{
                     setSongs(data)
                    setData({
-                       cover:"img10.jpg",
+                       cover:img10,
                        name:"Top Songs",
                     })
                })
             }).catch((e)=>{
                 console.log(e)
            })
-           }else{
+           }
+           else if(info){
+            setSongs(info.songs)
+            setData(info);
+       }else{
            
            const url = `http://localhost:8000/playlist/${name}`;
             fetch(url,{method:"GET",credentials:"include"}).then((response)=>{
@@ -47,10 +52,7 @@ export default function Playlist({add,setAdd,info}){
                 console.log(e)
             })
            }
-          if(info){
-               setSongs(info.songs)
-               setData(info);
-          }
+         
            
   },[])
   
@@ -72,12 +74,13 @@ return(
           </div> : null}
       </div>
       <Playplaylist />
+      <Search songs={add}/>
       {songs? songs.map((s,i)=>{
        
                 return <MusicCover key={i} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i}  add={add} setAdd={setAdd}/>
       }) : null}
     <div className="text-left w-screen bg-black z-10 ">
-      {  current ? <AudioHover /> : null }
+      {  current.now ? <AudioHover /> : null }
       </div>
       </div>
      

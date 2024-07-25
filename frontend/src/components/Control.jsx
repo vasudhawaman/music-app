@@ -7,18 +7,22 @@ import Replay10Icon from '@mui/icons-material/Replay10';
 import PauseIcon from '@mui/icons-material/Pause';
 import { PlayContext } from "../context/PlayContext";
 import { PlayerContext } from "../context/PlayerContext";
-import Lyrics from "./Lyrics";
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import TimesOneMobiledataIcon from '@mui/icons-material/TimesOneMobiledata';
 export default function Control(){
   const {start,setStart} = useContext(PlayContext);
   const [maxValue,setMax] = useState(0);
   const [value,setValue] =useState(0);
+  const [speed,setSpeed]=useState(100);
+  const [volume,setVolume]=useState(100);
   const {
     audioRef,
     current,
     nextSong,
     playStatus,setPlayStatus,
     play,pause,
-    total,setTotal
+    total,setTotal,handleSongSpeed,
+    handleSongVolume
   } = useContext(PlayerContext)
   
 async function addViews(){
@@ -81,6 +85,14 @@ async function addViews(){
            setValue(e.target.value);
            audioRef.current.currentTime = e.target.value;
     }
+    function handleSpeed(e){
+      setSpeed(e.target.value);
+      handleSongSpeed(e);
+    }
+    function handleVolume(e){
+      setVolume(e.target.value);
+      handleSongVolume(e);
+    }
     function handlePlay(){
       //  setPlaying(false);
       setMax(audioRef.current.duration);
@@ -124,7 +136,7 @@ async function addViews(){
               <div>{`${Math.floor(value /60)}`+':'+`${Math.floor(value % 60)}`}</div>
              
          <div class="bg-black">
-            <input type="range" min="0" max={maxValue}  id="myRange" className="w-full " value={value} style={{accentColor:"rgb(249 ,115, 22)"}} onChange={handleValue} />
+            <input type="range" min="0" max={maxValue}  id="myRange" className="w-full" value={value} style={{accentColor:"rgb(249 ,115, 22)"}} onChange={handleValue} />
          </div>
          <div className="flex justify-center items-center bg-black">
          <div className="flex mt-0  bg-black">
@@ -139,10 +151,14 @@ async function addViews(){
         
         {current ? <audio id="audio" src={current.now.audio} ref={audioRef} hidden /> : null}
         </div>
-       
-         </div>
-         {/* <Lyrics/> */}
           
+
+
+         </div>
+         <div><TimesOneMobiledataIcon className="text-orange-300" /><input id="default-range" type="range" value={speed} onChange={handleSpeed} class="w-1/6 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" min="0" max="200"/>
+          </div>
+        <div><VolumeUpIcon className="text-orange-300"/><input id="default-range" type="range" value={volume} onChange={handleVolume} class=" w-1/6 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" min="0" max="100"/>
+        </div>
         </div>
       )
 }
