@@ -93,4 +93,4 @@ You can directly navigate to our project by clicking [here]()
 - [Krish Pathak](https://github.com/krishpathak)
 
 **Date:**
-June-J:uly'24
+June-July'24
