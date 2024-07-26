@@ -10,12 +10,12 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 
-client = MongoClient('mongodb+srv://vasudhawaman734:NTmWW8UMpb5980be@cluster0.ctfmgcz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+client = MongoClient('mongodb+srv://vasudhawaman734:NTmWW8UMpb5980be@cluster0.ctfmgcz.mongodb.net/music?retryWrites=true&w=majority&appName=Cluster0')
 
 databasenames =client.list_database_names()
 
 db =client['music']
-collection =db['music']
+collection =db['musics']
 
 result =collection.find()
 

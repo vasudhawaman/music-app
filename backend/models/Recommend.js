@@ -22,6 +22,9 @@ const RecommendSchema = new Schema({
     },
     type:{
         type:String,
+    },
+    name:{
+        type:String,
     }
 })
 

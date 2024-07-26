@@ -1,8 +1,8 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 const LikedSongs = () => {
   return (
-    <div className='text-white'>LikedSongs</div>
+    <div className='text-white'></div>
   )
 }
 

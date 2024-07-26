@@ -1,21 +1,45 @@
-import React,{useState,useEffect} from "react"
+import React,{useState,useEffect,useContext} from "react"
 import ArtistCard from "../components/Artistcard";
 import SideComponent from "../components/SideComponent"
+import { SearchContext } from "../context/SearchContext";
 import Header from "../components/Header"
 export default function Allartist(){
          const [cards,setCard] = useState([]);
-         useEffect(()=>{
-             async function getcards(){
-                const url = `http://localhost:8000/search/artist`;
-                fetch(url,{method:"GET",credentials:"include"}).then((response)=>{
-                   response.json().then((data)=>{
-                        setCard(data);
-                   })
-                }).catch((e)=>{
+        const {search,setSearch} = useContext(SearchContext);
+       
+        useEffect(() => {
+           
+            if(search){
+                const url = 'http://localhost:8000/search/artist';
+                fetch(url, { method: "POST", credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body:JSON.stringify({artist:search}),
+                }).then((response) => {
+                    response.json().then((data) => {
+                        setCard(data)
+                    })
+                }).catch((e) => {
                     console.log(e)
-               })
-             }
-             getcards()
+                })
+            }else{
+                async function getcards(){
+                    const url = `http://localhost:8000/search/allartist`;
+                    fetch(url,{method:"GET",credentials:"include"}).then((response)=>{
+                       response.json().then((data)=>{
+                            setCard(data);
+                       })
+                    }).catch((e)=>{
+                        console.log(e)
+                   })
+                 }
+                 getcards()
+            }
+    
+        }, [search])
+         useEffect(()=>{
+             
          },[])
     return(
         <>

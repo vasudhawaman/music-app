@@ -24,10 +24,9 @@ router.get('/artist',verifyToken,async(req,res)=>{
  });
 router.post('/create',verifyToken,async(req,res)=>{
       const {song,artist} =req.body;
-      console.log("called here")
      try{
          const user = await Recommend.find({song:song,user_id:req.id});
-         const singer = await Recommend.find({type:"artist",user_id:req.id});
+         const singer = await Recommend.find({type:"artist",user_id:req.id,name:artist});
          const music = await Music.find({song:song});
         if(user.length == 0){
             const newRecommend = new Recommend({

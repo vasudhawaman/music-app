@@ -9,7 +9,6 @@ function verifyToken(req, res, next) {
     next();
     } catch (error) {
       const {user} = jwt.verify(token,JWT_SECRET);
-      console.log(user);
     res.status(401).json({ error: 'Invalid token' });
     }
  }

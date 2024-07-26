@@ -55,18 +55,26 @@ async function addViews(){
  useEffect(()=>{
         
       if(current){
-      
+        setTimeout(()=>{
+          setTotal((prev)=>{
+            if(prev === 10){
+              addViews()
+              console.log("added")
+            }
+             return prev+1;
+          })
+        },1000)
         audioRef.current.ontimeupdate = () => {
           setValue(audioRef.current.currentTime);
-          
        }
+       
        
       }
       if(start){
         audioRef.current.play()
         setTimeout(()=>{
           setTotal((prev)=>{
-            if(prev === 30){
+            if(prev === 10){
               addViews()
               console.log("added")
             }
@@ -147,13 +155,10 @@ async function addViews(){
             }
             <div> <SkipNextIcon className="text-right text-xs sm:text-3xl text-orange-300"  onClick={forwardTO}/></div>
          
-            <div><Forward10Icon  className="text-right text-md sm:text-3xl text-orange-300"  onClick={forward10} /></div>
+      <div><Forward10Icon  className="text-right text-md sm:text-3xl text-orange-300"  onClick={forward10} /></div>
         
         {current ? <audio id="audio" src={current.now.audio} ref={audioRef} hidden /> : null}
         </div>
-          
-
-
          </div>
          <div><TimesOneMobiledataIcon className="text-orange-300" /><input id="default-range" type="range" value={speed} onChange={handleSpeed} class="w-1/6 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" min="0" max="200"/>
           </div>

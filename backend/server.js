@@ -9,7 +9,7 @@ const verifyToken = require('./middleware/verifyToken');
 const setToken = require('./middleware/setToken');
 const passport = require('passport');
 const session = require('express-session')
-mongoose.connect("mongodb://localhost:27017");
+mongoose.connect("mongodb+srv://vasudhawaman734:NTmWW8UMpb5980be@cluster0.ctfmgcz.mongodb.net/music?retryWrites=true&w=majority&appName=Cluster0");
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error!!'));
 require('./OAuth/googleoauth')
@@ -28,15 +28,15 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors(
-     {
+ app.use(cors(
+      {
           credentials: true,
           origin:
-               process.env.NODE_ENV === "production"
+                process.env.NODE_ENV === "production"
                     ? process.env.CLIENT_URL
                     : "http://localhost:3000",
-     }
-));
+      }
+ ));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 app.use('/auth', require('./routes/user'))
@@ -52,7 +52,6 @@ app.get('/createToken/:token' ,(req,res)=>{
      res.cookie('token_musify',String(req.params.token),{
           maxAge:24*60*60*7*1000*3,
       }).send({message:"success"})
-    
 })
 app.post('/upload', verifyToken, async (req, res) => {
      const { song, cover, audio,text } = req.body;

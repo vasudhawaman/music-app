@@ -56,7 +56,7 @@ export default function Allsongs({ add,setAdd }) {
       {add? <Share shareUrl={add.shareUrl} /> : null}
       {
          songs.length>0 &&  songs.map((s,i)=>{
-            return <MusicCover key={s._id} id={s._id} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i}  add={add} setAdd={setAdd} />
+            return <MusicCover key={s._id} id={s._id} song={s.song} artist={s.artist} audio={s.audio} cover={s.cover} index={i}  add={add} setAdd={setAdd} count={s.count} />
            })
       }
      

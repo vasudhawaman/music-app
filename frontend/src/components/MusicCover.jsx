@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { PlayerContext } from "../context/PlayerContext";
 import ShareIcon from '@mui/icons-material/Share';
 import Share from './Share'
-export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd}){
+export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd,count}){
   const {name}= useParams();
        const [like,setLike]= useState(false)
        const {
@@ -65,7 +65,7 @@ export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd}
           method:"POST"
         });
         const recommend = await response.json();
-  
+        console.log(recommend);
         recommend.forEach(async(element)=>{
           const u = `http://localhost:8000/recommend/create`;
           const result = await fetch(u,{method:"POST",credentials:"include",
@@ -103,7 +103,8 @@ export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd}
         <Link to="controls" spy={true} smooth={true} duration={500}>
                  
          <div className="w-4/5 h-12 border-indigo-50 bg-black text-orange-300  grid grid-cols-8 z-5 p-2 border-amber-400" >
-            <div className="col-span-1 rounded-full" onClick={setsong}> <img src={cover} className="object contain h-3/5 w-3/5 md:w-3/5 pl-1 md:pl-5" /></div>
+            <div className="col-span-1 rounded-full" onClick={setsong}> <img src={cover} className="object contain h-3/5 w-3/5 md:w-3/5 pl-1 md:pl-5" />
+            </div>
             <div className="font-bold col-span-2 text-xs md:text-md mr-0 sm:mr-1  ml-1"  onClick={setsong}>{songName}</div>
             <div className="col-span-1 text-xs md:text-md mr-0 sm:mr-1 ml-1"  onClick={setsong}>{artistName}</div>
             <div className="col-span-1 text-xs md:text-md"> <PlaylistAddIcon onClick={()=>{
@@ -129,12 +130,15 @@ export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd}
        }
         }/> }
               </div>
-              <div className="col-span-1 text-xs md:text-md"><ShareIcon onClick={()=>{ 
+              <div className="col-span-1 text-xs md:text-md">
+                <ShareIcon onClick={()=>{ 
                 setAdd(obj)
                const share= document?.getElementById("share");
                share?.classList.remove("hidden");
 
-              }}/>  </div>
+              }}/> 
+                
+              </div>
               
          </div>
       

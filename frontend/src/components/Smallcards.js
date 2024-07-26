@@ -13,6 +13,19 @@ const Smallcards = () => {
          console.log(json)
      }
      GetCards()
+     if(cards.length === 0){
+        async function setit(){
+            const response = await fetch("http://localhost:8000/search/random",{
+                method:"GET",
+                credentials:"include"
+            });
+             const json = await response.json()
+            let data =[];
+            data.push(json[1]);
+            data.push(json[0]);
+            setCards(data);
+         }
+     }
     },[])
     return (
         <div className='your-artist '>
