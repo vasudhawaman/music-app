@@ -33,9 +33,10 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 
 ## About
 ### This web application  allows users to register and login and listen to songs and create and edit playlists.Users can upload their songs as well.It allows users to follow other users and artists on the app
+
 ## Getting Started
 
-1. Clone the repository:
+1. ### Clone the repository:
 
 ```bash
 https://github.com/vasudhawaman/music-app.git
