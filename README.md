@@ -42,37 +42,55 @@ Clone the repository using the following command:
 https://github.com/vasudhawaman/music-app.git
 ```
 ### 2. Open your terminal.
+Launch your terminal application to execute the subsequent commands.
 
-### 3. Configuration:
-
-Type the given command to install all the dependencies.
+### 3. Navigating project directory
+Navigate to the project directory by using following command:
 
 ```bash
-npm i
+cd music-app
 ```
 
-4. Now to navigate to the backend directory:
+### 4. Installing all the dependencies
+To install all the dependencies type following command in your terminal.
 
+```bash
+npm install
+```
+
+### 5. Start the Backend
+Change to the backend directory and start the backend server:
 ```bash
 cd backend
-```
-
-5. For starting the backend directory:
-
-```bash
 nodemon server.js
 ```
 
-6. Now to navigate to the frontend directory:
-
+### 6. Start the Frontend
+Open new terminal and repeat step 3 and then type following command
 ```bash
 cd frontend
-```
-
-7. For starting frontend directory:
-
-```bash
 npm start
 ```
 
+## For direct navigation
+You can directly navigate to our project by clicking [here]()
+
+## Technologies Used
+- React
+- Node.js
+- MongoDB
+- FastApi
+- Passport.js
+- Python
+
+
 ## Note : You do need Node js installed.
+
+## Created by
+**Name**
+- [Samarth Sharma](https://github.com/Samarth021004)
+- [Vasudha Vaman](https://github.com/vasudhawaman)
+- [Krish Pathak](https://github.com/krishpathak)
+
+**Date**
+June-July'24
