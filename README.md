@@ -33,12 +33,45 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 
 ## About
 ### This web application  allows users to register and login and listen to songs and create and edit playlists.Users can upload their songs as well.It allows users to follow other users and artists on the app
-## How to start
-### Clone the repository in the terminal using git clone <repo link>
-### Type the following command to install all dependencies: npm i
-### For starting the client: cd frontend
-###                             npm start 
-### For starting the server: cd backend
-###                          nodemon server.js
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+https://github.com/vasudhawaman/music-app.git
+```
+2. Open your terminal.
+
+3. Configuration:
+
+Type the given command to install all the dependencies.
+
+```bash
+npm i
+```
+
+4. Now to navigate to the backend directory:
+
+```bash
+cd backend
+```
+
+5. For starting the backend directory:
+
+```bash
+nodemon server.js
+```
+
+6. Now to navigate to the frontend directory:
+
+```bash
+cd frontend
+```
+
+7. For starting frontend directory:
+
+```bash
+npm start
+```
 
 ## Note : You do need Node js installed.
