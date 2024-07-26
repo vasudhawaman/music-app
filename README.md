@@ -87,10 +87,10 @@ You can directly navigate to our project by clicking [here]()
 ## Note : You do need Node js installed.
 
 ## Created by
-**Name**
+**Name:**
 - [Samarth Sharma](https://github.com/Samarth021004)
 - [Vasudha Vaman](https://github.com/vasudhawaman)
 - [Krish Pathak](https://github.com/krishpathak)
 
-**Date**
-June-July'24
+**Date:**
+June-J:uly'24
