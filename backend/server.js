@@ -9,7 +9,9 @@ const verifyToken = require('./middleware/verifyToken');
 const setToken = require('./middleware/setToken');
 const passport = require('passport');
 const session = require('express-session')
-mongoose.connect("mongodb+srv://vasudhawaman734:NTmWW8UMpb5980be@cluster0.ctfmgcz.mongodb.net/music?retryWrites=true&w=majority&appName=Cluster0");
+const env = require('dotenv')
+env.config()
+mongoose.connect(process.env.MONGO_URI);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error!!'));
 require('./OAuth/googleoauth')
@@ -33,7 +35,7 @@ app.use(passport.session());
           credentials: true,
           origin:
                 process.env.NODE_ENV === "production"
-                    ? process.env.CLIENT_URL
+                    ? process.env.FRONTEND
                     : "http://localhost:3000",
       }
  ));

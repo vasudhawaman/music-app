@@ -75,16 +75,11 @@ app.add_middleware(
 async def recommend(song: str):
     recommendation = {
         "song": song,
-        "number_songs": 2
+        "number_songs": 1
         }
     response=recommedations.recommend(recommendation)
     return JSONResponse(content=response,status_code=200)
-#query request hein lol
 
-
-# ngrok_tunnel = ngrok.connect(5000)
-# print('Public URL:', ngrok_tunnel.public_url)
-#nest_asyncio.apply()
-uvicorn.run(app, port=5000)
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="0.0.0.0", port=8000)
+#uvicorn.run(app, port=5000)
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

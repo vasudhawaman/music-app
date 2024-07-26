@@ -11,11 +11,10 @@ export default function SideComponent(){
       if(response.status !== 200) navigate("/");
     }
     Check()
-      
   },[])
     return(
     <div  className="h-screen cols-span-2 hidden sm:block text-orange-300 p-3 text-center bg-gradient-to-r from-black to-slate-900">
-        <div className="fixed top-3 left-5 sm:left-0 lg:left-5 text-3xl sm:text-2xl font-bold mb-6">Musify</div>
+        <div className="fixed top-3 left-7 sm:left-0 lg:left-7 text-3xl sm:text-2xl font-bold mb-6">Musify</div>
         <div className="fixed top-14 left-5 sm:left-0 lg:left-5 text-sm">
         <Link to="/songs" className="block py-2 px-4 rounded-lg ">
           Songs

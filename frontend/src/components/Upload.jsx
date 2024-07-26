@@ -19,7 +19,7 @@ export default function Upload(){
         const songUrl = await uploadSong(form.audio)
         const songName = form.song.replace(/\+s/g,"-")
         const client = new AssemblyAI({
-          apiKey: "8eaea9586edd4058829c50e7d2eb5e85"
+          apiKey: process.env.REACT_APP_ASSEMBLY,
         })
         const config = {
           audio_url: songUrl

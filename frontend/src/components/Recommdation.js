@@ -9,23 +9,10 @@ const Recommdation = ({width}) => {
             credentials:"include"
         });
          const json = await response.json()
-         setCards(json)
+         console.log(json)
+        if(json.length >0) setCards(json)
      }
      GetCards()
-     if(cards.length === 0){
-        async function set(){
-            const response = await fetch("http://localhost:8000/recommend/top",{
-                method:"GET",
-                credentials:"include"
-            });
-             const json = await response.json()
-             let data =[];
-             data.push(json[1]);
-             data.push(json[0]);
-             setCards(data);
-
-         }
-     }
     },[])
     const calculatedMarginLeft = width === '85%' ? '67%' : '70%';
     return (

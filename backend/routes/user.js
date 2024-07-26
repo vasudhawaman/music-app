@@ -10,8 +10,7 @@ const nodemailer = require('nodemailer');
 var jwt = require('jsonwebtoken');
 const axios = require('axios');
 const Playlist = require('../models/Playlist');
-const JWT_SECRET = 'Krishkrishpathak@happend#';
-
+const JWT_SECRET = process.env.JWT_SECRET;
 router.post('/cheak', [
     body('email', "Enter the correct email").isEmail(),
     body('password', "Enter mininmun 6 letter passowrd").isLength(6)

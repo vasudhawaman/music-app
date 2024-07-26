@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'Krishkrishpathak@happend#';
+const env = require('dotenv');
+env.config();
+const JWT_SECRET = process.env.JWT_SECRET;
 function verifyToken(req, res, next) {
       const token = req.cookies.token_musify;
    if (!token) return res.status(401).json({ error: 'Access denied' });

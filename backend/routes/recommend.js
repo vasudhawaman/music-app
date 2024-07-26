@@ -10,13 +10,26 @@ const Artist = require('../models/Artist');
 const router = express.Router();
 router.get('/artist',verifyToken,async(req,res)=>{
     const result = await Recommend.find({type:"artist",user_id:req.id});
-    console.log(result);
-   return res.status(200).json(result);
+    if(result.length === 0){
+        const artist = await Artist.aggregate([ { $sample: { size: 2 } } ]);
+        let artists =[];
+        artists.push(artist[0]);
+        artists.push(artist[1]);
+        return res.status(200).json(artist);
+    }
+   else{ return res.status(200).json(result); }
    
  });
  router.get('/all',verifyToken,async(req,res)=>{
     const result = await Recommend.find({user_id:req.id,type:"song"});
-   return res.status(200).json(result)
+    if(result.length === 0){
+        const artist = await Music.aggregate([ { $sample: { size: 2 } } ]);
+        let artists =[];
+        artists.push(artist[0]);
+        artists.push(artist[1]);
+        return res.status(200).json(artist);
+    }
+  else{ return res.status(200).json(result) }
  });
  router.get('/top',verifyToken,async(req,res)=>{
     const result = await Music.find().sort({count:-1},{$limit:10});
