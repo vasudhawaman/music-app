@@ -3,6 +3,8 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 
 ## Screenshot
 
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/rmslgqptbrudxdmwoqbh.png)
+
 ## Features
 ### Sharing and Social Integration
 - Share Songs Across Platforms: Easily share your favorite songs with friends and family on WhatsApp, Gmail, Facebook, and other social media platforms.
