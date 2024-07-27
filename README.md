@@ -8,7 +8,7 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 2. Login Page
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/sbbhnqipo3yomtdgxdxp.png)
 3. Profile Page
-![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/aodibrqbzzdd2eo5qhvc.jpg)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722069221/mfuxydyyfuymyer2hfp2.png)
 4. Your playlist
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/lzhww2qdkdrf7oslmmju.jpg)
 5. Home page
@@ -94,56 +94,20 @@ npm start
 ```
 
 ## Usage
-### For registration and login
-You can easily register for our music app using your email address. Here’s how it works:
-
-1. Email Registration: Enter your email address to start the registration process.
-
-2. Set Your Username: Choose a username that is convenient for you. Please ensure that it is unique and not already in use.
-
-3. Receive OTP: After submitting your email and username, you will receive a One-Time Password (OTP) sent to your registered email address.
-
-4. Verify Your Account: Enter the correct OTP to verify your email and complete your registration.
-
-5. Login to the App: Once registered, you can proceed to the login page and enter your credentials to access the app.
+### For registration and login:
+You can easily register for our music app by entering your email address to start the process and choosing a unique username. After submitting your information, you’ll receive a One-Time Password (OTP) in your email. Simply enter the OTP to verify your account and complete the registration. Once registered, you can proceed to the login page and enter your credentials to access the app.
 
 ### Forgot password
-1. Navigate to the Login Page: Open the app and go to the login page.
-
-2. Click on “Forgot Password?”: Click on the "Forgot Password?" link to initiate the recovery process.
-
-3. Enter Your Registered Email Address: Provide the email address you used during registration.
-
-4. Receive OTP: After submitting your email, you will receive a One-Time Password (OTP) sent to your registered email.
-
-5. Reset Your Password: Enter the OTP in the app to verify your identity. Once verified, you’ll be prompted to create a new password.
-
-6. Log In: After changing your password, you can return to the login page and log in with your new credentials.
+To recover your password, navigate to the login page of the app and click on the “Forgot Password?” link. Enter the email address you registered with, and you’ll receive a One-Time Password (OTP) in your inbox. Enter the OTP in the app to verify your identity, after which you can create a new password. Once your password is successfully reset, return to the login page and log in using your new credentials.
 
 ### Making playlist
-1. Navigate to the Playlist Page: Open the sidebar menu and click on the “Playlist” option to go to the playlist page.
-
-2. Click on “Create”: Once you’re on the playlist page, click the “Create” button to start the playlist creation process.
-
-3. Add Your Credentials: Enter the required details for your new playlist, such as the playlist name and any additional information.
-
-4. Create the Playlist: After filling in the necessary information, click “Submit” or “Create” to finalize your playlist.
-
-5. Your Playlist is Ready: Once created, your new playlist will be available for you to add songs and enjoy!
+To create a new playlist, open the sidebar menu and select the “Playlist” option. Then, click on the “Create” button to begin the process. Enter the required details for your playlist, such as the name and any additional information. Once you’ve filled in the necessary information, click “Submit” or “Create” to finalize your playlist. Your new playlist will now be ready for you to add songs and enjoy!
 
 ### Upload songs
-To upload a new song to the app, follow these simple steps:
+To upload a new song, open the sidebar menu and select the “Upload” option. Enter the name of your song in the designated field and choose the audio file from your device to upload. Next, upload a cover photo that represents your track. Once you’ve filled in all the necessary information and uploaded the files, click the “Upload” button to complete the process.
 
-1. Navigate to the Upload Page: Open the sidebar menu and click on the “Upload” option to access the upload page.
-
-2. Add Song Details: Enter the name of your song in the provided field.
-
-3. Upload Your Song: Select the audio file of your song from your device and upload it.
-
-4. Upload Cover Photo: Choose a cover photo for your song by uploading an image that represents your track.
-
-5. Submit Your Upload: Once you have filled in all the necessary information and uploaded the files, click the  “Upload” button to complete the process.
-
+### Followings and Followers
+To follow and access another user's profile, click on the user’s profile and select “View All” to see their details. Then, click the “Follow” button to follow them. Once you’re following the user, you can visit their profile anytime from the “Following” section to see their updates and activities. Additionally, you can manage your followings and followers by clicking the “Delete” icon to remove users from your list.
 
 ## For direct navigation
 You can directly navigate to our project by clicking [here](https://musicify-frontend.vercel.app)
