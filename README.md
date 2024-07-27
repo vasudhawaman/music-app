@@ -3,16 +3,26 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 
 ## Screenshot
 
+1. Register Page
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/rmslgqptbrudxdmwoqbh.png)
+2. Login Page
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/sbbhnqipo3yomtdgxdxp.png)
+3. Profile Page
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/aodibrqbzzdd2eo5qhvc.jpg)
+4. Your playlist
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/lzhww2qdkdrf7oslmmju.jpg)
+5. Home page
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/u1hrb9rp3gg3ahbf1gyp.jpg)
+6. Song Upload
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/upohyjleptir4ycoqo68.jpg)
+7. All songs from different artist
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/mtxgicvfzgaap6gzoyht.jpg)
+8. All artist page
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/zattmklxupscfoueymjj.jpg)
+9.Trending Songs
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/spyujzuvbyx5mcl7ud5w.jpg)
-![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/mtxgicvfzgaap6gzoyht.jpg)
+10. Radio Station
+![Muscify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/uttnujs8qxpobxvdc3dp.jpg)
 
 ## Features
 ### Sharing and Social Integration
@@ -41,6 +51,9 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 
 ### Chatbot Assistance
 - Chatbot: Access our helpful chatbot if you're feeling confused about what to listen to next. The chatbot will guide you with music recommendations and assist you with any queries.
+
+### Offline download
+-Download your favorite tracks and playlists to your device, enabling you to listen to them anytime, anywhere—no Wi-Fi or mobile data required.
 
 ## About
 ### This web application  allows users to register and login and listen to songs and create and edit playlists.Users can upload their songs as well.It allows users to follow other users and artists on the app
