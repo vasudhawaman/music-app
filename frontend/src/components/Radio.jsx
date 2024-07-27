@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
-
 export default function Radio({audio,date}){
-   
-       // so shhit does work 
-       // now need to add a UI for uploading a radio time and for that an audio file feature/list of playlists
-       
-   
     return(
         <>
         <audio id="peer" src={audio}  hidden/>

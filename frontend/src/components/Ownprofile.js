@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import SideComponent from './SideComponent';
 import Header from './Header';
 const Ownprofile = ({ username }) => {
+    const backend =process.env.REACT_APP_BACKEND;
    const[follower,setfollower]=useState();
    const[following,setfollowings]=useState(); 
     useEffect(() => {
-        const url = 'http://localhost:8000/playlist/followers';
+        const url = `${backend}/playlist/followers`;
 
         async function alluser() {
                 const response = await fetch(url, {
@@ -23,7 +24,7 @@ const Ownprofile = ({ username }) => {
             alluser()
         },[])
         useEffect(() => {
-            const url = 'http://localhost:8000/playlist/followings';
+            const url = `${backend}/playlist/followings`;
     
             async function alluser() {
                     const response = await fetch(url, {
@@ -74,20 +75,15 @@ const Ownprofile = ({ username }) => {
                     </Link>
                 </div>
                 <div className='flex gap-2 mt-4'>
-                   
                     <Link to='/allusers'>
                     <div className="follower bold bg-orange-300 text-black rounded-md w-16 md:w-24 h-5 text-center text-xs md:text-md">
                         View All
                     </div>
                     </Link>
-                    
                 </div>
-               
             </div>
         </div>
-
-   
-</div>
+  </div>
   </div>
         
     )

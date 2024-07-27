@@ -1,7 +1,8 @@
-import React,{useState,useRef} from "react";
+import React,{useState} from "react";
 import  {useNavigate} from "react-router-dom";
-import CloseIcon from '@mui/icons-material/Close';
+
 export default function Search({songs}){
+  const backend =process.env.REACT_APP_BACKEND;
     const [credentials, setcredentials] = useState({name: "" })
     
     const [playlists,setPlaylists] =useState([]);
@@ -19,7 +20,7 @@ export default function Search({songs}){
      const handlesubmit = async (e) => {
         e.preventDefault();
       
-        const url = 'http://localhost:8000/playlist/search';
+        const url = `${backend}/playlist/search`;
         const response = await fetch(url, {
             method: "POST",
             credentials: "include",
@@ -41,7 +42,7 @@ export default function Search({songs}){
    async function add(e){
         const name =e.target.value;
         console.log(name)
-         const url = 'http://localhost:8000/playlist/add';
+         const url = `${backend}/playlist/add`;
          const response = await fetch(url, {
              method: "PUT",
              credentials: "include",
@@ -76,10 +77,7 @@ export default function Search({songs}){
              return(
                    <>
                    <input className="bg-white text-orange-300 hover:text-red-700"  value={playlist.name} key={i} onClick={add} readOnly/>
-                   </>
-                  
-                
-             )
+                   </>  )
     })
   }
   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={(e)=>{

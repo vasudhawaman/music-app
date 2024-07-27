@@ -2,16 +2,14 @@ import React,{useEffect,useState,useReducer, useContext} from "react";
 import { useParams ,useLocation} from "react-router-dom";
 import img10 from "../assets/img10.jpg"
 import MusicCover from "./MusicCover";
-import Control from "./Control";
 import AudioHover from "./AudioHover";
 import Playplaylist from "./Playplaylist";
-import { PlayContextProvider } from "../context/PlayContext";
 import { PlayerContext } from "../context/PlayerContext";
 import SideComponent from "./SideComponent";
 import Header from "./Header";
 import Search from "./Search";
 export default function Playlist({add,setAdd,info}){
- 
+  const backend =process.env.REACT_APP_BACKEND;
        const {
         current,
         songs,setSongs
@@ -23,7 +21,7 @@ export default function Playlist({add,setAdd,info}){
           
            if(name === "top"){
           
-            const url = `http://localhost:8000/recommend/top`;
+            const url = `${backend}/recommend/top`;
             fetch(url,{method:"GET",credentials:"include"}).then((response)=>{
                response.json().then((data)=>{
                     setSongs(data)
@@ -41,7 +39,7 @@ export default function Playlist({add,setAdd,info}){
             setData(info);
        }else{
            
-           const url = `http://localhost:8000/playlist/${name}`;
+           const url = `${backend}/playlist/${name}`;
             fetch(url,{method:"GET",credentials:"include"}).then((response)=>{
               response.json().then((val)=>{
                    setSongs(val[0].songs)
@@ -83,10 +81,8 @@ return(
       {  current.now ? <AudioHover /> : null }
       </div>
       </div>
-     
-</div>
-  </div>
-     
+      </div>
+      </div>
       </>
    )
 }

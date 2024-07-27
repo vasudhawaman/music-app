@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import PlaylistCard from './PlaylistCard';
 import UserPlaylist from './UserPlaylist';
 import { Link } from 'react-router-dom';
 const Followingprofile = (user) => {
+    const backend =process.env.REACT_APP_BACKEND;
     const [userdata, setuser] = useState('');
     const [playlists, setplaylist] = useState('');
     console.log(user);
     useEffect(() => {
-        const url = 'http://localhost:8000/auth/profile';
+        const url = `${backend}/auth/profile`;
         async function alluser() {
             try {
                 const response = await fetch(url, {

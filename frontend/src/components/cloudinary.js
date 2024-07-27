@@ -11,8 +11,7 @@ export async function uploadSong(file){
    try{
      const response =  await axios.post("https://api.cloudinary.com/v1_1/dw1rh4myb/video/upload",formData);
      if(response){
-       console.log(response.data);
-       const {secure_url} = response.data; // wrokeddd yay
+       const {secure_url} = response.data; 
      return secure_url;
     
    }else{
@@ -36,8 +35,7 @@ export async function uploadCover(file){
    try{
      const response =  await axios.post("https://api.cloudinary.com/v1_1/dw1rh4myb/image/upload",formData);
      if(response){
-       console.log(response.data);
-       const {secure_url} = response.data; // wrokeddd yay
+       const {secure_url} = response.data; 
      return secure_url;
     
    }else{

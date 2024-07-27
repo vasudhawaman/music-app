@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import { FaCirclePlay } from "react-icons/fa6";
 const Recommdation = ({width}) => {
+    const backend =process.env.REACT_APP_BACKEND;
     const [cards,setCards]=useState([]);
     useEffect(()=>{
         async function GetCards(){
-        const response = await fetch("http://localhost:8000/recommend/all",{
+        const response = await fetch(`${backend}/recommend/all`,{
             method:"GET",
             credentials:"include"
         });

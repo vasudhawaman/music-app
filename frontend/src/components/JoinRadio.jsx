@@ -4,10 +4,11 @@ import RadioStationCover from "./RadioCoverComponent";
 import SideComponent from "./SideComponent";
 import Header from "./Header";
 export default function JoinRadio()  {
+  const backend =process.env.REACT_APP_BACKEND;
   const [all,setAll] =useState([]);
   useEffect(()=>{
     async function getAllStations(){
-    const url = 'http://localhost:8000/radio/all';
+    const url = `${backend}/radio/all`;
              const response = await fetch(url, {
                  method: "GET",
                  credentials: "include",

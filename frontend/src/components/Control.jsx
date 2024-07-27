@@ -38,7 +38,6 @@ async function addViews(){
         method:"POST"
       });
       const recommend = await response.json();
-      console.log(recommend)
       recommend.forEach(async(element)=>{
         const u = `http://localhost:8000/recommend/create`;
         const result = await fetch(u,{method:"POST",credentials:"include",

@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../css/radio.css";
 import { uploadSong } from "./cloudinary";
 export default function AddRadio(){
+    const backend =process.env.REACT_APP_BACKEND;
    const [info,setInfo] = useState({time:"16:00",name:"",date:"",audio:""})
    function handleChange(e){
     console.log(e.target.files)
@@ -22,7 +23,6 @@ export default function AddRadio(){
               e.preventDefault()
               console.log(info)
               const cloud_url = await uploadSong(info.audio);
-             
               const date = info.date;
               console.log(date)
               const time = info.time + ":00";
@@ -36,7 +36,7 @@ export default function AddRadio(){
                   s+= ' ';
              });
              const newDate = new Date(s);
-             const url = 'http://localhost:8000/radio/create';
+             const url = `${backend}/radio/create`;
              const response = await fetch(url, {
                  method: "POST",
                  credentials: "include",

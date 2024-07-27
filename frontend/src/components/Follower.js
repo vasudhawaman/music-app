@@ -4,6 +4,7 @@ import { SearchContext } from "../context/SearchContext";
 import SideComponent from './SideComponent';
 import Header from './Header';
 const Follower = ({ username }) => {
+    const backend =process.env.REACT_APP_BACKEND;
     console.log(username)
     const [user, setusers] = useState([]);
     const [data, setdata] = useState([]);
@@ -11,7 +12,7 @@ const Follower = ({ username }) => {
    
     const handleondelete=(id)=>{
         console.log(id)
-         const url = 'http://localhost:8000/playlist/deletefollower';
+         const url = `${backend}/playlist/deletefollower`;
          async function deleteFollower(){
            
            const response= await fetch(url,{
@@ -30,7 +31,7 @@ const Follower = ({ username }) => {
     useEffect(() => {
         if(search){
             console.log(search,"useEffectran")
-            const url = 'http://localhost:8000/search/follower';
+            const url = `${backend}/search/follower`;
             fetch(url, { method: "POST", credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
@@ -44,7 +45,7 @@ const Follower = ({ username }) => {
                 console.log(e)
             })
         }else{
-        const url = 'http://localhost:8000/auth/followers';
+        const url = `${backend}/auth/followers`;
 
         async function alluser() {
             try {

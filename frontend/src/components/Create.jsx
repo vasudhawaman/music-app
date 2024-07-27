@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import  {useNavigate} from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 export default function Create(){
+    const backend =process.env.REACT_APP_BACKEND;
     const [credentials, setcredentials] = useState({name: "" })
     const navigate = useNavigate();
     function showDialog(){
@@ -15,7 +16,7 @@ export default function Create(){
      const handlesubmit = async (e) => {
         e.preventDefault();
         credentials.name = credentials.name.replace(/\+s/g,"-")
-        const url = 'http://localhost:8000/playlist/create';
+        const url = `${backend}/playlist/create`;
         const response = await fetch(url, {
             method: "POST",
             credentials: "include",
@@ -26,10 +27,7 @@ export default function Create(){
         });
 
         const json = await response.json();
-       
-        const{message}=json;
-        
-       
+
     }
     const handleonchange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value })

@@ -6,12 +6,13 @@ import { SearchContext } from '../context/SearchContext';
 import SideComponent from './SideComponent';
 import Header from './Header';
 const Followings = ({ username, setuser }) => {
+  const backend =process.env.REACT_APP_BACKEND;
   const [user, setusers] = useState([]);
   const [data, setdata] = useState([])
 const navigate =useNavigate()
 const {search,setSearch} = useContext(SearchContext)
   const handleondelete = (id) => {
-    const url = 'http://localhost:8000/playlist/deletefollower';
+    const url = `${backend}/playlist/deletefollower`;
     async function deleteFollower() {
 
       const response = await fetch(url, {
@@ -28,23 +29,8 @@ const {search,setSearch} = useContext(SearchContext)
     deleteFollower();
   }
   useEffect(() => {
-    if(0){
-      // console.log(search,"useEffectran")
-      // const url = 'http://localhost:8000/search/following';
-      // fetch(url, { method: "POST", credentials: "include",
-      //     headers: {
-      //         "Content-Type": "application/json",
-      //     },
-      //     body:JSON.stringify({name:search}),
-      // }).then((response) => {
-      //     response.json().then((data) => {
-      //         setusers(data)
-      //     })
-      // }).catch((e) => {
-      //     console.log(e)
-      // })
-  }else{
-    const url = 'http://localhost:8000/auth/followings';
+   
+    const url = `${backend}/auth/followings`;
 
     async function alluser() {
       try {
@@ -65,7 +51,7 @@ const {search,setSearch} = useContext(SearchContext)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    }
+    
 
     alluser();
   }

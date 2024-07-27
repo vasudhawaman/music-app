@@ -82,14 +82,14 @@ app.get('/auth/google',
      passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/auth/google/callback',
-     passport.authenticate('google', { failureRedirect: 'http://localhost:3000' }),
+     passport.authenticate('google', { failureRedirect: process.env.FRONTEND }),
      (req, res) => {
           const {authToken}=req.user;
           console.log(req.user);
           res.cookie('token_musify',String(authToken),{
                maxAge:24*60*60*7*1000*3,
            })
-           res.redirect(`http://localhost:3000/home`);
+           res.redirect(`${process.env.FRONTEND}/home`);
      });
 app.listen(8000, () => {
      console.log("Listening on port 8000");

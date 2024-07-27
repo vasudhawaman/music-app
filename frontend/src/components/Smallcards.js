@@ -1,21 +1,21 @@
 import React,{useEffect, useState} from 'react'
 
 const Smallcards = () => {
+    const backend =process.env.REACT_APP_BACKEND;
     const [cards,setCards] = useState([]);
     useEffect(()=>{
         async function GetCards(){
-        const response = await fetch("http://localhost:8000/recommend/artist",{
+        const response = await fetch(`${backend}/recommend/artist`,{
             method:"GET",
             credentials:"include"
         });
          const json = await response.json()
          setCards(json)
-         console.log(json)
      }
      GetCards()
      if(cards.length === 0){
         async function setit(){
-            const response = await fetch("http://localhost:8000/search/random",{
+            const response = await fetch(`${backend}/search/random`,{
                 method:"GET",
                 credentials:"include"
             });

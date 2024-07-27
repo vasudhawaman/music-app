@@ -34,7 +34,7 @@ export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd,
        
       useEffect(()=>{
         async function isLiked(){
-          const url = `http://localhost:8000/like/check`;
+          const url = `${backend}/like/check`;
           const result = await fetch(url,{method:"POST",credentials:"include",
             headers: {
               "Content-Type": "application/json",
@@ -47,7 +47,6 @@ export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd,
         isLiked();
       },[name])
       function setsong(){
-       console.log("set song called")
        setCurrent({now:obj,index:index})
         setPlayStatus(false)
         setTotal(0)
@@ -81,7 +80,7 @@ export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd,
 }
       async  function removeLike(){
         setLike(false)
-        const url = `http://localhost:8000/like/${song}`;
+        const url = `${backend}/like/${song}`;
         const result = await fetch(url,{method:"DELETE",credentials:"include",
           headers: {
             "Content-Type": "application/json",
@@ -91,7 +90,7 @@ export default function MusicCover({id,song,artist,cover,audio,index,add,setAdd,
         alert(json.message)
       }
      async function deleteSong(){
-      const url = `http://localhost:8000/playlist/${name}`;
+      const url = `${backend}/playlist/${name}`;
       const result = await fetch(url,{method:"POST",credentials:"include",
         headers: {
           "Content-Type": "application/json",

@@ -6,6 +6,7 @@ import Search from "./Search";
 import SideComponent from "./SideComponent";
 import Header from "./Header"
 export default function SharedItem({add,setAdd}){
+  const backend =process.env.REACT_APP_BACKEND;
    const [data,setData] = useState({});
    const location = useLocation();
    const queryParams = new URLSearchParams(location.search);
@@ -13,7 +14,7 @@ export default function SharedItem({add,setAdd}){
    const id = queryParams.get("id");
    useEffect(()=>{
          async function getData(){
-            const url = `http://localhost:8000/recommend/share`;
+            const url = `${backend}/recommend/share`;
             const result = await fetch(url,{method:"POST",credentials:"include",
               headers: {
                 "Content-Type": "application/json",
@@ -39,7 +40,6 @@ export default function SharedItem({add,setAdd}){
 
       {paramValue === "playlist" && data.name ? <Playlist info={data} /> : null}
         
-     
       </>
     )
 

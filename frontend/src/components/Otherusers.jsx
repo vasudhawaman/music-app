@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import SideComponent from './SideComponent';
 import Header from './Header';
 const Otherusers = ({username}) => {
+    const backend =process.env.REACT_APP_BACKEND;
     const [data, setdata] = useState([])
 useEffect(() => {
-        const url = 'http://localhost:8000/auth/all';
+        const url = `${backend}/auth/all`;
         async function alluser() {
             try {
                 const response = await fetch(url, {
@@ -19,7 +20,6 @@ useEffect(() => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                console.log(data)
                 setdata(data)
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -33,7 +33,7 @@ useEffect(() => {
 
     async function updateFollow(id){
       
-        const url = 'http://localhost:8000/auth/allfollow';
+        const url = `${backend}/auth/allfollow`;
 
         const response = await fetch(url, {
             method: "POST",
@@ -44,12 +44,10 @@ useEffect(() => {
             body: JSON.stringify({id:id})
         });
         const result= await response.json()
-        console.log(result)
     }
     return (
-        <div className=" w-screen h-screen grid grid-cols-7">
+<div className=" w-screen h-screen grid grid-cols-7">
    <SideComponent />
-
 <div className="w-full col-start-0 sm:col-start-2 col-span-7 sm:col-span-5">
       <Header />
       <div className='mt-14 flex flex-row '>
@@ -65,7 +63,6 @@ useEffect(() => {
             })}
 
         </div>
-   
 </div>
   </div>
         

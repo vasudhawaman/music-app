@@ -96,19 +96,7 @@ export default function Playplaylist(){
       resetTranscript,
       browserSupportsSpeechRecognition
     } = useSpeechRecognition({commands});
-   
-    //  useEffect(()=>{
-      
-    //    if(transcript.toLowerCase() === "play"){
-    //       playSongs()
-    //       resetTranscript()
-    //    }
-    //    else if(transcript.toLowerCase() === "pause"){
-    //     setPlayStatus(false)
-    //      pause()
-    //      resetTranscript()
-    //  }
-    //  },[listening])
+
     if (!browserSupportsSpeechRecognition) {
       return <span>Browser doesn't support speech recognition.</span>;
     }

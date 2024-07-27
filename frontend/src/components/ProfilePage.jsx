@@ -1,6 +1,4 @@
 import React from 'react'
-import Navbar from './Navbar'
-import ArtistCard from './Artistcard'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const ProfilePage = () => {
@@ -24,14 +22,6 @@ const ProfilePage = () => {
                 </div>
                 
                 
-                {/* <div className='text-2xl text-center mt-7 mr-10  '>Your Top Artists</div>
-                <div className="artist-list flex gap-2 items-center">
-                    <ArtistCard/>
-                    <ArtistCard/>
-                    <ArtistCard/>
-                    <ArtistCard/>
-                    <ArtistCard/>
-                </div> */}
             </div>
 
 
