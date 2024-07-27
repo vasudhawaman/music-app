@@ -60,7 +60,7 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 ### 1. Clone the repository:
 Clone the repository using the following command:
 ```bash
-https://github.com/vasudhawaman/music-app.git
+git clone https://github.com/vasudhawaman/music-app.git
 ```
 ### 2. Open your terminal.
 Launch your terminal application to execute the subsequent commands.
