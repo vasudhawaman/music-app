@@ -55,9 +55,6 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 ### Offline download
 - Download your favorite tracks and playlists to your device, enabling you to listen to them anytime, anywhere—no Wi-Fi or mobile data required.
 
-## About
-Musicify is your ultimate music companion, designed to elevate your musical experience to new heights. Whether you're a casual listener, a music enthusiast, or a social butterfly, Musicify offers a comprehensive suite of features tailored just for you.Join the Musicify community today and embark on a musical journey like never before. Whether you're exploring new sounds or sharing your favorite tracks, Musicify is here to make your musical experience seamless and enjoyable.
-
 ## Getting Started
 
 ### 1. Clone the repository:
@@ -90,7 +87,7 @@ nodemon server.js
 ```
 
 ### 6. Start the Frontend
-Open new terminal and repeat step 3 and then type following command
+Open new terminal and repeat step 3 and then type following command:
 ```bash
 cd frontend
 npm start
@@ -150,6 +147,9 @@ To upload a new song to the app, follow these simple steps:
 
 ## For direct navigation
 You can directly navigate to our project by clicking [here](https://musicify-frontend.vercel.app)
+
+## About
+Musicify is your ultimate music companion, designed to elevate your musical experience to new heights. Whether you're a casual listener, a music enthusiast, or a social butterfly, Musicify offers a comprehensive suite of features tailored just for you.Join the Musicify community today and embark on a musical journey like never before. Whether you're exploring new sounds or sharing your favorite tracks, Musicify is here to make your musical experience seamless and enjoyable.
 
 ## Technologies Used
 - React
