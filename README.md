@@ -97,7 +97,7 @@ npm start
 ```
 
 ## Usage
-### - For registration and login
+- For registration and login
 You can easily register for our music app using your email address. Here’s how it works:
 
 1. Email Registration: Enter your email address to start the registration process.
@@ -110,7 +110,7 @@ You can easily register for our music app using your email address. Here’s how
 
 5. Login to the App: Once registered, you can proceed to the login page and enter your credentials to access the app.
 
-### - Forgot password
+- Forgot password
 1. Navigate to the Login Page: Open the app and go to the login page.
 
 2. Click on “Forgot Password?”: Click on the "Forgot Password?" link to initiate the recovery process.
