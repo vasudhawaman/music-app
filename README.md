@@ -97,7 +97,7 @@ npm start
 ```
 
 ## Usage
-- For registration and login
+### For registration and login
 You can easily register for our music app using your email address. Here’s how it works:
 
 1. Email Registration: Enter your email address to start the registration process.
@@ -110,7 +110,7 @@ You can easily register for our music app using your email address. Here’s how
 
 5. Login to the App: Once registered, you can proceed to the login page and enter your credentials to access the app.
 
-- Forgot password
+### Forgot password
 1. Navigate to the Login Page: Open the app and go to the login page.
 
 2. Click on “Forgot Password?”: Click on the "Forgot Password?" link to initiate the recovery process.
@@ -123,7 +123,7 @@ You can easily register for our music app using your email address. Here’s how
 
 6. Log In: After changing your password, you can return to the login page and log in with your new credentials.
 
-## Making playlist
+### Making playlist
 1. Navigate to the Playlist Page: Open the sidebar menu and click on the “Playlist” option to go to the playlist page.
 
 2. Click on “Create”: Once you’re on the playlist page, click the “Create” button to start the playlist creation process.
@@ -134,8 +134,18 @@ You can easily register for our music app using your email address. Here’s how
 
 5. Your Playlist is Ready: Once created, your new playlist will be available for you to add songs and enjoy!
 
-## Upload songs
-you go on uplaod from sidebar and then add name of your song and then 
+### Upload songs
+To upload a new song to the app, follow these simple steps:
+
+1. Navigate to the Upload Page: Open the sidebar menu and click on the “Upload” option to access the upload page.
+
+2. Add Song Details: Enter the name of your song in the provided field.
+
+3. Upload Your Song: Select the audio file of your song from your device and upload it.
+
+4. Upload Cover Photo: Choose a cover photo for your song by uploading an image that represents your track.
+
+5. Submit Your Upload: Once you have filled in all the necessary information and uploaded the files, click the  “Upload” button to complete the process.
 
 
 ## For direct navigation
