@@ -93,6 +93,13 @@ cd frontend
 npm start
 ```
 
+### 7. To start with FastApi
+```bash
+cd FastApi
+pip install -r requirement.txt
+uvicorn main:app --host 0.0.0.0 --port 5000
+```
+
 ## Usage
 ### For registration and login:
 You can easily register for our music app by entering your email address to start the process and choosing a unique username. After submitting your information, you’ll receive a One-Time Password (OTP) in your email. Simply enter the OTP to verify your account and complete the registration. Once registered, you can proceed to the login page and enter your credentials to access the app.
