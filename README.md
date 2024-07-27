@@ -4,6 +4,15 @@ Musicify is a dynamic and user-friendly music streaming application designed for
 ## Screenshot
 
 ![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/rmslgqptbrudxdmwoqbh.png)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/sbbhnqipo3yomtdgxdxp.png)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/aodibrqbzzdd2eo5qhvc.jpg)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/lzhww2qdkdrf7oslmmju.jpg)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/u1hrb9rp3gg3ahbf1gyp.jpg)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/upohyjleptir4ycoqo68.jpg)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/mtxgicvfzgaap6gzoyht.jpg)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/zattmklxupscfoueymjj.jpg)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049531/musicify/spyujzuvbyx5mcl7ud5w.jpg)
+![Musicify](https://res.cloudinary.com/dvpvxjcfk/image/upload/v1722049530/musicify/mtxgicvfzgaap6gzoyht.jpg)
 
 ## Features
 ### Sharing and Social Integration
